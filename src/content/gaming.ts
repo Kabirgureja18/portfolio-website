@@ -21,12 +21,12 @@ export const gamingContent = {
       iconType: "cube"
     },
     {
-      id: "spiderman",
-      title: "Spider-Man / Superhero Action",
-      genre: "Open World & Story Adventure",
-      hoursNote: "100% Completionist",
-      tagline: "Traversing New York skyline physics with Marvel comic fidelity.",
-      iconType: "spider"
+      id: "sim-racing",
+      title: "Sim Racing & Track Driving",
+      genre: "Physics Simulation & Time Trials",
+      hoursNote: "Apex Precision",
+      tagline: "Mastering weight transfer, brake bias, and optimal racing lines across virtual circuits.",
+      iconType: "wheel"
     },
     {
       id: "tactical-shooters",

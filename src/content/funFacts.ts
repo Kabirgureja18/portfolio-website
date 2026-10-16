@@ -26,10 +26,10 @@ export const funFactsContent: FunFactItem[] = [
     tag: "BILLBOARD"
   },
   {
-    id: "marvel-multiverse",
-    title: "MCU LORE #05",
-    fact: "Maintains detailed written notes and timelines on Kang variants & Multiverse branching.",
-    tag: "MARVEL"
+    id: "apexdrawn-creator",
+    title: "SIM RACING #05",
+    fact: "Built ApexDrawn enabling anyone to sketch a racetrack and drive it in 3D right in the browser.",
+    tag: "APEXDRAWN"
   },
   {
     id: "first-milestone",

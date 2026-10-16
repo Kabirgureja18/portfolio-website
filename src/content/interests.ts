@@ -74,12 +74,12 @@ export const interestsContent: InterestItem[] = [
     note: "Every button, slider, and layout must feel deliberate and punchy."
   },
   {
-    id: "marvel-lore",
-    name: "Marvel & Avengers Lore",
+    id: "sim-racing",
+    name: "Sim Racing & Track Dynamics",
     category: "Athletics & Lore",
-    tagline: "MCU multiverse breakdowns, comic arcs, theory forum deep-dives",
-    iconName: "Shield",
-    note: "Active member of Marvel fan theory communities; can debate timeline paradoxes for hours."
+    tagline: "Telemetry analysis, custom circuit architecture & vehicle dynamics",
+    iconName: "Flag",
+    note: "Exploring vehicle aerodynamics, racing lines, and real-time physics simulation."
   },
   {
     id: "video-games",

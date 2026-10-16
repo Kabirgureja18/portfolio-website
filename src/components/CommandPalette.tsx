@@ -100,6 +100,22 @@ export default function CommandPalette({
       },
     },
     {
+      id: 'apexdrawn-case-study',
+      title: 'ApexDrawn — Draw the track. Own the racing line. (Case Study)',
+      category: 'Projects',
+      icon: Gamepad2,
+      badge: 'Case Study',
+      action: () => onNavigate('apexdrawn-case-study'),
+    },
+    {
+      id: 'apexdrawn-live',
+      title: 'Launch ApexDrawn 3D Racing Game (apexdrawn.com)',
+      category: 'External',
+      icon: ExternalLink,
+      badge: 'Live',
+      action: () => window.open('https://apexdrawn.com/', '_blank', 'noopener,noreferrer'),
+    },
+    {
       id: 'terra',
       title: 'T.E.R.R.A. Robotics Bio-System',
       category: 'Projects',
@@ -146,14 +162,6 @@ export default function CommandPalette({
       icon: Trophy,
       badge: 'Timeline',
       action: () => onNavigate('achievements'),
-    },
-    {
-      id: 'marvel',
-      title: 'Marvel Lore & Theory Submission Box',
-      category: 'Community',
-      icon: Shield,
-      badge: 'Multiverse',
-      action: () => onNavigate('marvel'),
     },
     {
       id: 'gaming',
@@ -300,7 +308,7 @@ export default function CommandPalette({
                 autoFocus
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Jump to projects, achievements, marvel, contact..."
+                placeholder="Jump to projects, apexdrawn, achievements, contact..."
                 className="w-full bg-transparent text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none font-mono-code"
               />
               <span className="text-[10px] font-mono-code text-zinc-500 px-2 py-0.5 rounded border border-zinc-800 bg-zinc-900">
@@ -312,7 +320,7 @@ export default function CommandPalette({
             <div className="max-h-80 overflow-y-auto p-2 divide-y divide-zinc-900/40">
               {filteredItems.length === 0 ? (
                 <div className="p-8 text-center text-xs font-mono-code text-zinc-500">
-                  No matching sector in Kabir's portfolio. Try searching "terra", "marvel", "art", or "jarvis".
+                  No matching sector in Kabir's portfolio. Try searching "terra", "apexdrawn", "art", or "jarvis".
                 </div>
               ) : (
                 filteredItems.map((item, index) => {

@@ -81,7 +81,6 @@ export default function Navbar({
     { label: 'WHAT I DO', target: 'what-i-do' },
     { label: 'PROJECTS', target: 'projects' },
     { label: 'ACHIEVEMENTS', target: 'achievements' },
-    { label: 'MARVEL', target: 'marvel' },
     { label: 'CONTACT', target: 'contact' },
   ];
 

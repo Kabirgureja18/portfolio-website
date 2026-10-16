@@ -52,7 +52,7 @@ export const profileContent: ProfileData = {
     "I don’t really follow one path. I like exploring whatever catches my attention, learning by actually making things and seeing how far an idea can go.",
     "Right now, I’m building the future I want to see."
   ],
-  currentFocus: "T.E.R.R.A. robotics research, root India apparel development, and ENEGY AI.",
+  currentFocus: "ApexDrawn 3D racing simulation, T.E.R.R.A. robotics research, and root India apparel development.",
   statusBadge: "BUILDING IN PUBLIC — LAB ONLINE",
   email: "kabirgureja08@gmail.com",
   phone: "+91 9826977750"

@@ -32,7 +32,7 @@ export const socialsContent: SocialLink[] = [
     platform: "Direct Mail",
     handle: "kabirgureja08@gmail.com",
     url: "mailto:kabirgureja08@gmail.com",
-    description: "Primary channel for collaborations, website inquiries, robotics ideas & Marvel debates.",
+    description: "Primary channel for collaborations, website inquiries, robotics ideas & tech discussions.",
     verified: true
   }
 ];

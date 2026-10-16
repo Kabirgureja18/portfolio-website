@@ -32,7 +32,7 @@ export const statsContent: StatItem[] = [
     id: "tabs",
     label: "AVERAGE BROWSER TABS OPEN",
     value: "∞ (64+)",
-    context: "Across robotics datasheets, Marvel lore threads, code docs & stock charts.",
+    context: "Across robotics datasheets, 3D graphics specs, code docs & stock charts.",
     badge: "Perpetual State"
   }
 ];

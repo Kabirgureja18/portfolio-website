@@ -13,7 +13,6 @@ import InterestsSection from './components/InterestsSection';
 import ProjectsSection from './components/ProjectsSection';
 import AchievementsSection from './components/AchievementsSection';
 import ClothingAndProductsSection from './components/ClothingAndProductsSection';
-import MarvelSection from './components/MarvelSection';
 import SocialsAndGithubSection from './components/SocialsAndGithubSection';
 import ContactSection from './components/ContactSection';
 import ProjectModal from './components/ProjectModal';
@@ -23,6 +22,7 @@ import MiniGameEasterEgg from './components/MiniGameEasterEgg';
 import ContentStudioModal from './components/ContentStudioModal';
 import EnegyChatbot from './components/EnegyChatbot';
 import AchievementsPage from './components/AchievementsPage';
+import ApexDrawnCaseStudy from './components/ApexDrawnCaseStudy';
 import GsapScrollOrchestrator from './components/GsapScrollOrchestrator';
 import GlitchShaderOverlay from './components/GlitchShaderOverlay';
 import InteractiveCLI from './components/ui/InteractiveCLI';
@@ -49,7 +49,7 @@ export default function App() {
   const [profile, setProfile] = useState(initialProfile);
   const [scrollQuote, setScrollQuote] = useState(scrollQuoteContent);
   const [roadQuote, setRoadQuote] = useState(roadQuoteContent);
-  const [currentView, setCurrentView] = useState<'home' | 'achievements'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'achievements' | 'apexdrawn'>('home');
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
   const [isEasterEggOpen, setIsEasterEggOpen] = useState(false);
@@ -62,7 +62,7 @@ export default function App() {
   // Scroll spy to highlight current active section in nav & offcanvas
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['about', 'what-i-do', 'projects', 'achievements', 'marvel', 'contact'];
+      const sections = ['about', 'what-i-do', 'projects', 'achievements', 'contact'];
       const scrollPosition = window.scrollY + 200;
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
@@ -80,16 +80,40 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Sync hash routing if user opens with #achievements
+  // Sync URL routing on mount, popstate and hashchange
   useEffect(() => {
-    const checkHash = () => {
-      if (window.location.hash === '#achievements-archive' || window.location.hash === '#certificates') {
+    const handleUrlChange = () => {
+      const path = window.location.pathname;
+      const hash = window.location.hash;
+
+      if (
+        path === '/projects/apexdrawn' ||
+        path.startsWith('/projects/apexdrawn') ||
+        hash === '#/projects/apexdrawn' ||
+        hash === '#projects/apexdrawn' ||
+        hash === '#apexdrawn'
+      ) {
+        setCurrentView('apexdrawn');
+        document.title = 'ApexDrawn — Case Study | Kabir Gureja';
+        return;
+      }
+      if (hash === '#achievements-archive' || hash === '#certificates') {
         setCurrentView('achievements');
+        document.title = 'Honors & Certificates Archive | Kabir Gureja';
+        return;
+      }
+      if (path === '/' || path === '') {
+        setCurrentView('home');
+        document.title = 'Kabir Gureja — Personal Digital World';
       }
     };
-    checkHash();
-    window.addEventListener('hashchange', checkHash);
-    return () => window.removeEventListener('hashchange', checkHash);
+    handleUrlChange();
+    window.addEventListener('popstate', handleUrlChange);
+    window.addEventListener('hashchange', handleUrlChange);
+    return () => {
+      window.removeEventListener('popstate', handleUrlChange);
+      window.removeEventListener('hashchange', handleUrlChange);
+    };
   }, []);
 
   // Global keybindings: Cmd+K for palette, `~` for KABIR.EXE, Cmd+E for ENEGY AI, Cmd+J for CLI
@@ -115,8 +139,21 @@ export default function App() {
   }, []);
 
   const handleNavigate = (sectionId: string) => {
+    if (
+      sectionId === 'apexdrawn-case-study' ||
+      sectionId === 'apexdrawn' ||
+      sectionId === '/projects/apexdrawn' ||
+      sectionId === 'projects/apexdrawn'
+    ) {
+      setCurrentView('apexdrawn');
+      window.history.pushState(null, '', '/projects/apexdrawn');
+      document.title = 'ApexDrawn — Case Study | Kabir Gureja';
+      smoothScrollTo(0, { duration: 0.8 });
+      return;
+    }
     if (sectionId === 'achievements-archive' || sectionId === 'certificates') {
       setCurrentView('achievements');
+      document.title = 'Honors & Certificates Archive | Kabir Gureja';
       smoothScrollTo(0, { duration: 0.8 });
       return;
     }
@@ -139,6 +176,8 @@ export default function App() {
 
     if (currentView !== 'home') {
       setCurrentView('home');
+      window.history.pushState(null, '', '/');
+      document.title = 'Kabir Gureja — Personal Digital World';
       setTimeout(() => {
         smoothScrollTo(sectionId, { offset: -70, duration: 1.2 });
       }, 120);
@@ -189,10 +228,31 @@ export default function App() {
           activeSection={activeSection}
         />
 
-      {currentView === 'achievements' ? (
+      {currentView === 'apexdrawn' ? (
+        <ApexDrawnCaseStudy
+          onBackToPortfolio={(targetSection = 'projects') => {
+            setCurrentView('home');
+            window.history.pushState(null, '', '/');
+            document.title = 'Kabir Gureja — Personal Digital World';
+            setTimeout(() => {
+              smoothScrollTo(targetSection, { offset: -70, duration: 1.0 });
+            }, 100);
+          }}
+          onNavigateToProject={() => {
+            setCurrentView('home');
+            window.history.pushState(null, '', '/');
+            document.title = 'Kabir Gureja — Personal Digital World';
+            setTimeout(() => {
+              smoothScrollTo('projects', { offset: -70, duration: 1.0 });
+            }, 100);
+          }}
+        />
+      ) : currentView === 'achievements' ? (
         <AchievementsPage
           onBackToPortfolio={() => {
             setCurrentView('home');
+            window.history.pushState(null, '', '/');
+            document.title = 'Kabir Gureja — Personal Digital World';
             smoothScrollTo(0, { duration: 0.8 });
           }}
         />
@@ -245,8 +305,6 @@ export default function App() {
             onNavigateToContact={() => handleNavigate('contact')}
           />
 
-          {/* 12. Marvel Multiverse Corner & Theory Transmission */}
-          <MarvelSection />
 
           {/* 13. GitHub Repos & Network Socials */}
           <SocialsAndGithubSection />

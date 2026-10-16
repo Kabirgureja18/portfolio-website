@@ -38,6 +38,47 @@ export default function AchievementsPage({ onBackToPortfolio }: AchievementsPage
   const [inspectingItem, setInspectingItem] = useState<AchievementItem | null>(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [customAchievements, setCustomAchievements] = useState<AchievementItem[]>([]);
+  const [shareFeedback, setShareFeedback] = useState<string | null>(null);
+
+  const handleShareItem = async (item: AchievementItem) => {
+    const shareUrl = window.location.origin + '/#achievements';
+    const shareData = {
+      title: `${item.title} — Kabir Portfolio`,
+      text: `${item.title} (${item.organization}, ${item.year}). Credential: ${item.credentialId || 'Verified Record'}`,
+      url: shareUrl,
+    };
+
+    if (typeof navigator !== 'undefined' && navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+      try {
+        await navigator.share(shareData);
+        setShareFeedback('Shared successfully!');
+        setTimeout(() => setShareFeedback(null), 2500);
+        return;
+      } catch (err: unknown) {
+        if (err instanceof Error && err.name === 'AbortError') {
+          return;
+        }
+      }
+    }
+
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(`${item.title} - ${item.organization} (${item.year}): ${shareUrl}`);
+        setShareFeedback('Record link copied to clipboard!');
+      } else {
+        const input = document.createElement('textarea');
+        input.value = `${item.title} - ${item.organization} (${item.year}): ${shareUrl}`;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+        setShareFeedback('Record link copied to clipboard!');
+      }
+    } catch {
+      setShareFeedback('Record: ' + item.title);
+    }
+    setTimeout(() => setShareFeedback(null), 2500);
+  };
 
   // Form state for adding custom achievements
   const [newTitle, setNewTitle] = useState('');
@@ -419,12 +460,22 @@ export default function AchievementsPage({ onBackToPortfolio }: AchievementsPage
                     EVIDENCE RECORD // {inspectingItem.category.toUpperCase()}
                   </span>
                 </div>
-                <button
-                  onClick={() => setInspectingItem(null)}
-                  className="w-8 h-8 rounded-full bg-zinc-900 border border-zinc-700 hover:bg-zinc-800 flex items-center justify-center text-zinc-300 hover:text-white cursor-pointer"
-                >
-                  <X className="w-4 h-4" />
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => handleShareItem(inspectingItem)}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-zinc-900 border border-zinc-700 hover:border-cyan-500/60 text-zinc-300 hover:text-white text-xs font-mono-code transition-all cursor-pointer"
+                    title="Share Record"
+                  >
+                    <Share2 className="w-3.5 h-3.5 text-cyan-400" />
+                    <span>SHARE</span>
+                  </button>
+                  <button
+                    onClick={() => setInspectingItem(null)}
+                    className="w-8 h-8 rounded-full bg-zinc-900 border border-zinc-700 hover:bg-zinc-800 flex items-center justify-center text-zinc-300 hover:text-white cursor-pointer"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
 
               {/* Modal Body */}
@@ -651,6 +702,21 @@ export default function AchievementsPage({ onBackToPortfolio }: AchievementsPage
               </form>
             </motion.div>
           </div>
+        )}
+      </AnimatePresence>
+
+      {/* Share Toast */}
+      <AnimatePresence>
+        {shareFeedback && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-2.5 rounded-xl bg-zinc-900 border border-cyan-500/60 text-white shadow-2xl font-mono-code text-xs"
+          >
+            <CheckCircle2 className="w-4 h-4 text-cyan-400" />
+            <span>{shareFeedback}</span>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>

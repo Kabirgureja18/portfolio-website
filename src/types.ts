@@ -24,7 +24,7 @@ export interface ProjectItem {
   }[];
   accentColor: string;
   featured?: boolean;
-  visualType?: 'terra' | 'jarvis' | 'browser' | 'robotics' | 'web' | 'ecommerce' | 'farmverse';
+  visualType?: 'terra' | 'jarvis' | 'browser' | 'robotics' | 'web' | 'ecommerce' | 'farmverse' | 'racing' | 'apexdrawn';
   clips?: ProjectClip[];
   embed3dUrl?: string;
   liveUrl?: string;
@@ -96,13 +96,4 @@ export interface ProductItem {
   status: string;
   description: string;
   priceNote?: string;
-}
-
-export interface MarvelQuestion {
-  id: string;
-  question: string;
-  theoryTopic: string;
-  senderName: string;
-  email: string;
-  date: string;
 }

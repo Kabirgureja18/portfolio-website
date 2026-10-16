@@ -7,7 +7,6 @@ import { artworkContent } from './artwork';
 import { photographyContent } from './photography';
 import { productsContent } from './products';
 import { gamingContent } from './gaming';
-import { marvelContent } from './marvel';
 import { socialsContent, githubPreviewData } from './socials';
 import { jarvisContent } from './jarvis';
 import { statsContent } from './stats';
@@ -27,7 +26,6 @@ export {
   photographyContent as photosContent,
   productsContent,
   gamingContent,
-  marvelContent,
   socialsContent,
   githubPreviewData,
   jarvisContent,
@@ -50,7 +48,6 @@ export interface PortfolioContentState {
   photography: PhotoItem[];
   products: ProductItem[];
   gaming: typeof gamingContent;
-  marvel: typeof marvelContent;
   socials: typeof socialsContent;
   github: typeof githubPreviewData;
   jarvis: typeof jarvisContent;
@@ -69,7 +66,6 @@ export const initialPortfolioContent: PortfolioContentState = {
   photography: photographyContent,
   products: productsContent,
   gaming: gamingContent,
-  marvel: marvelContent,
   socials: socialsContent,
   github: githubPreviewData,
   jarvis: jarvisContent,

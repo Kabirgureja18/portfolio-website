@@ -8,6 +8,8 @@ import BounceCards from './reactbits/BounceCards/BounceCards';
 import LSStudioMockup from './ui/LSStudioMockup';
 import { playPop } from '../utils/soundFX';
 
+import apexdrawnOg from '../assets/apexdrawn-og.png';
+
 interface ProjectsSectionProps {
   projects: ProjectItem[];
   onSelectProject: (project: ProjectItem) => void;
@@ -15,6 +17,7 @@ interface ProjectsSectionProps {
 }
 
 const projectImages: Record<string, string> = {
+  apexdrawn: apexdrawnOg,
   terra: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Agricultural_drone_spraying_on_paddy_field.jpg/1280px-Agricultural_drone_spraying_on_paddy_field.jpg',
   jarvis: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80',
   'ai-browser': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80',
@@ -31,7 +34,7 @@ export default function ProjectsSection({
 }: ProjectsSectionProps) {
   const [filter, setFilter] = useState<string>('All');
   const [viewMode, setViewMode] = useState<'bounce' | 'grid'>('bounce');
-  const [expandedProjectId, setExpandedProjectId] = useState<string>('terra');
+  const [expandedProjectId, setExpandedProjectId] = useState<string>('apexdrawn');
 
   const categories = ['All', 'Climate & BioTech', 'AI & Software', 'Robotics & Hardware', 'Web & Products'];
 
@@ -274,6 +277,20 @@ export default function ProjectsSection({
                     </div>
 
                     <div className="flex items-center gap-2 flex-wrap">
+                      {activeProject.id === 'apexdrawn' && (
+                        <button
+                          id="btn-apexdrawn-case-study"
+                          data-interactive="true"
+                          onClick={() => {
+                            playPop(550);
+                            onNavigateToSection('apexdrawn-case-study');
+                          }}
+                          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#ffb020] hover:bg-[#ffc14d] text-zinc-950 text-xs font-mono-code font-bold uppercase tracking-wider shadow transition-all cursor-pointer"
+                        >
+                          <Sparkles className="w-3.5 h-3.5" />
+                          <span>READ CASE STUDY</span>
+                        </button>
+                      )}
                       <button
                         id="btn-expand-modal"
                         data-interactive="true"
@@ -326,7 +343,8 @@ export default function ProjectsSection({
                           </div>
                           <div className="flex flex-col gap-2">
                             {activeProject.links.map((link, idx) => {
-                              const isExternalLive = link.url.includes('terra-by-kabir') || link.url.includes('farmverse-technoxian');
+                              const isExternalLive = link.url.includes('terra-by-kabir') || link.url.includes('farmverse-technoxian') || link.url.includes('apexdrawn.com');
+                              const isCaseStudyLink = link.url.includes('projects/apexdrawn');
                               return (
                                 <a
                                   key={idx}
@@ -337,36 +355,49 @@ export default function ProjectsSection({
                                     if (link.url.startsWith('#')) {
                                       e.preventDefault();
                                       onNavigateToSection(link.url.replace('#', ''));
+                                    } else if (link.url.startsWith('/projects/apexdrawn')) {
+                                      e.preventDefault();
+                                      onNavigateToSection('apexdrawn-case-study');
                                     }
                                   }}
                                   className={`group flex items-center justify-between p-3.5 rounded-xl border text-xs font-mono-code transition-all cursor-pointer shadow-sm ${
-                                    isExternalLive
+                                    isCaseStudyLink
+                                      ? 'bg-amber-950/40 hover:bg-amber-900/60 border-amber-500/70 text-amber-100 shadow-[0_0_20px_rgba(255,176,32,0.15)]'
+                                      : isExternalLive
                                       ? 'bg-emerald-950/40 hover:bg-emerald-900/60 border-emerald-500/70 text-emerald-100 shadow-[0_0_20px_rgba(16,185,129,0.15)]'
                                       : 'bg-zinc-900/90 hover:bg-zinc-850 border-zinc-800 hover:border-zinc-700 text-zinc-200'
                                   }`}
                                 >
                                   <div className="flex items-center gap-2.5">
-                                    {isExternalLive ? (
+                                    {isCaseStudyLink ? (
+                                      <span className="p-1 rounded bg-amber-500/20 text-[#ffb020]">
+                                        <Sparkles className="w-3.5 h-3.5" />
+                                      </span>
+                                    ) : isExternalLive ? (
                                       <span className="p-1 rounded bg-emerald-500/20 text-emerald-400">
                                         <Sparkles className="w-3.5 h-3.5" />
                                       </span>
                                     ) : (
                                       <Code2 className="w-3.5 h-3.5 text-[#ff3b30]" />
                                     )}
-                                    <span className={isExternalLive ? 'font-bold text-emerald-200' : 'font-semibold'}>
+                                    <span className={isCaseStudyLink ? 'font-bold text-amber-200' : isExternalLive ? 'font-bold text-emerald-200' : 'font-semibold'}>
                                       {link.label}
                                     </span>
                                   </div>
 
                                   <div className="flex items-center gap-2">
-                                    {isExternalLive && (
+                                    {isCaseStudyLink ? (
+                                      <span className="hidden sm:inline-flex items-center gap-1 text-[9px] font-mono-code px-2 py-0.5 rounded bg-[#ffb020] text-zinc-950 font-bold uppercase tracking-wider">
+                                        CASE STUDY
+                                      </span>
+                                    ) : isExternalLive ? (
                                       <span className="hidden sm:inline-flex items-center gap-1 text-[9px] font-mono-code px-2 py-0.5 rounded bg-emerald-500 text-zinc-950 font-bold uppercase tracking-wider">
                                         REDIRECT LINK
                                       </span>
-                                    )}
+                                    ) : null}
                                     <ArrowUpRight
                                       className={`w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${
-                                        isExternalLive ? 'text-emerald-400 group-hover:text-emerald-200' : 'text-zinc-400 group-hover:text-white'
+                                        isCaseStudyLink ? 'text-[#ffb020] group-hover:text-amber-200' : isExternalLive ? 'text-emerald-400 group-hover:text-emerald-200' : 'text-zinc-400 group-hover:text-white'
                                       }`}
                                     />
                                   </div>
@@ -480,10 +511,26 @@ export default function ProjectsSection({
 
                     {/* Title & Subtitle */}
                     <div>
-                      <h3 className="text-2xl font-display font-bold text-zinc-100 group-hover:text-white flex items-center justify-between">
-                        <span>{project.title}</span>
-                        <ArrowUpRight className="w-4 h-4 text-zinc-500 group-hover:text-zinc-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-                      </h3>
+                      <div className="flex items-center justify-between">
+                        <h3 className="text-2xl font-display font-bold text-zinc-100 group-hover:text-white flex items-center gap-2">
+                          <span>{project.title}</span>
+                        </h3>
+                        <div className="flex items-center gap-2">
+                          {project.id === 'apexdrawn' && (
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                playPop(540);
+                                onNavigateToSection('apexdrawn-case-study');
+                              }}
+                              className="text-[10px] font-mono-code px-2 py-0.5 rounded bg-[#ffb020] hover:bg-[#ffc14d] text-zinc-950 font-bold uppercase tracking-wider shadow cursor-pointer transition-all"
+                            >
+                              Case Study ↗
+                            </button>
+                          )}
+                          <ArrowUpRight className="w-4 h-4 text-zinc-500 group-hover:text-zinc-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                        </div>
+                      </div>
                       <p className="text-xs font-mono-code text-zinc-400 mt-1">
                         {project.subtitle}
                       </p>

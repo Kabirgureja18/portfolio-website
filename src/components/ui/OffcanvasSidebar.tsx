@@ -67,7 +67,6 @@ export default function OffcanvasSidebar({
     { label: 'WHAT I DO', target: 'what-i-do', desc: 'Craft, AI & Robotics Matrix' },
     { label: 'PROJECTS', target: 'projects', desc: 'Engineering & Code Lab' },
     { label: 'ACHIEVEMENTS', target: 'achievements', desc: 'Munish Award & Timeline' },
-    { label: 'MARVEL ARCHIVE', target: 'marvel', desc: 'Comic Theories & Lore' },
     { label: 'CONTACT', target: 'contact', desc: 'Direct Inquiries & Message' },
   ];
 
@@ -203,6 +202,24 @@ export default function OffcanvasSidebar({
                       </div>
                     </button>
                   )}
+
+                  <button
+                    data-interactive="true"
+                    onClick={() => {
+                      playPop(580);
+                      onClose();
+                      onNavigate('apexdrawn-case-study');
+                    }}
+                    className="p-3 rounded-xl bg-amber-950/30 border border-amber-500/40 hover:border-amber-400 hover:bg-amber-900/40 text-left transition-all cursor-pointer group"
+                  >
+                    <div className="flex items-center gap-1.5 text-xs font-mono-code font-bold text-[#ffb020]">
+                      <Sparkles className="w-3.5 h-3.5" />
+                      <span>APEXDRAWN</span>
+                    </div>
+                    <div className="text-[10px] text-zinc-400 mt-1">
+                      3D racing case study
+                    </div>
+                  </button>
 
                   {onOpenAchievementsPage && (
                     <button

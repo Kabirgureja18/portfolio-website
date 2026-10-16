@@ -1,6 +1,67 @@
 import { ProjectItem } from '../types';
+import apexdrawnOg from '../assets/apexdrawn-og.png';
+import apexdrawnTrackCanvas from '../assets/apexdrawn-track-canvas.jpg';
+import apexdrawnRacingAction from '../assets/apexdrawn-racing-action.jpg';
+import apexdrawnExportPipeline from '../assets/apexdrawn-export-pipeline.jpg';
 
 export const projectsContent: ProjectItem[] = [
+  {
+    id: "apexdrawn",
+    title: "ApexDrawn",
+    subtitle: "Draw the track. Own the racing line.",
+    category: "Web & Products",
+    status: "ACTIVE",
+    year: "2025",
+    summary: "A browser-based racing experience combining custom circuit creation, 3D driving, competitive time trials, and multiplayer racing.",
+    description: "ApexDrawn is a zero-install, browser-native 3D racing game and procedural track creator. Built on WebGL and Three.js, it empowers players to sketch racetracks freehand in 2D, customize road width, corner banking, elevation, and scenery, and instantly race on them in 3D across diverse vehicle classes. Features include real-time vehicle raycast dynamics, online multiplayer lobbies with party codes, global leaderboards with ghost deltas, and direct export pipelines to BeamNG.drive and Assetto Corsa.",
+    highlights: [
+      "Freehand 2D spline circuit editor with individual corner banking, elevation raises, and scenery placement",
+      "Real-time 3D in-browser driving simulation powered by Three.js & client-side raycast vehicle physics",
+      "Live multiplayer race lobbies supporting up to 8 drivers with real-time running order & party codes",
+      "Per-circuit time trials with sector tracking, global leaderboards, and personal ghost pace comparison",
+      "Simulator export pipeline converting user tracks directly into BeamNG.drive and Assetto Corsa packages"
+    ],
+    techStack: ["Three.js (WebGL)", "Procedural Spline Extrusion", "Raycast Vehicle Physics", "WebSockets Multiplayer", "TypeScript / JavaScript"],
+    accentColor: "#ffb020",
+    featured: true,
+    visualType: "racing",
+    liveUrl: "https://apexdrawn.com/",
+    links: [
+      { label: "Launch Live Game (apexdrawn.com)", url: "https://apexdrawn.com/", isExternal: true },
+      { label: "View Detailed Case Study (/projects/apexdrawn)", url: "/projects/apexdrawn", isExternal: false },
+      { label: "Inquire Architecture & Collab", url: "#contact" }
+    ],
+    clips: [
+      {
+        tag: "CIRCUIT DESIGNER",
+        title: "2D Spline Track Canvas",
+        caption: "Freeform circuit drafting with bezier control points, individual corner banking, and elevation profiles.",
+        imageUrl: apexdrawnTrackCanvas,
+        source: "ApexDrawn Procedural Canvas"
+      },
+      {
+        tag: "3D SIMULATION",
+        title: "In-Browser 3D Driving Action",
+        caption: "Instant transition from 2D sketch to real-time 3D racing with tire slip, curb rumble, and tachometer telemetry.",
+        imageUrl: apexdrawnRacingAction,
+        source: "Three.js WebGL Simulation Engine"
+      },
+      {
+        tag: "OFFICIAL RELEASE",
+        title: "Starting Grid & Gantry",
+        caption: "GT class racecar positioned on the start/finish line under the pit gantry on a player-created circuit.",
+        imageUrl: apexdrawnOg,
+        source: "apexdrawn.com Official Media"
+      },
+      {
+        tag: "SIM EXPORT",
+        title: "BeamNG & Assetto Corsa Pipeline",
+        caption: "Direct export of user-drawn tracks including terrain elevation, asphalt friction, barriers, and scenery into sim racing engines.",
+        imageUrl: apexdrawnExportPipeline,
+        source: "Simulator Export Architecture"
+      }
+    ]
+  },
   {
     id: "terra",
     title: "T.E.R.R.A.",

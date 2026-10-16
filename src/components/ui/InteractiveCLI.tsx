@@ -76,10 +76,10 @@ export default function InteractiveCLI({
               '  skills       → Technical stack & engineering tools',
               '  terra        → T.E.R.R.A. robotics prototype telemetry',
               '  farmverse    → FarmVerse & Agri Mitra rover telemetry',
+              '  apexdrawn    → ApexDrawn 3D racing & track creator case study',
               '  projects     → Jump directly to active engineering builds',
               '  awards       → Munish Innovation Award & MUN accolades',
               '  photo        → Editorial street photography (dedicated page coming soon)',
-              '  marvel       → Comic theories & MCU universe archive',
               '  contact      → Direct email & phone/WhatsApp details',
               '  goto <sec>   → Navigate to section (about, projects, contact, etc.)',
               '  clear        → Wipe the terminal screen',
@@ -166,6 +166,30 @@ export default function InteractiveCLI({
         ]);
         playSuccessChime();
         if (onNavigateToSection) onNavigateToSection('projects');
+        break;
+
+      case 'apexdrawn':
+      case 'racing':
+        setHistory((prev) => [
+          ...prev,
+          {
+            id: newId,
+            command: rawCmd,
+            response: [
+              'APEXDRAWN // 3D IN-BROWSER RACING & TRACK CREATOR:',
+              '• "Draw the track. Own the racing line."',
+              '• Procedural 2D spline canvas with corner banking & elevation profiles',
+              '• Real-time 3D physics driving in Three.js (WebGL) across diverse car classes',
+              '• 8-player live multiplayer lobbies, per-circuit global leaderboards & ghost deltas',
+              '• Standalone export pipeline to BeamNG.drive and Assetto Corsa',
+              '• Official Platform: https://apexdrawn.com/',
+              'Opening dedicated ApexDrawn case study...',
+            ],
+            type: 'success',
+          },
+        ]);
+        playSuccessChime();
+        if (onNavigateToSection) onNavigateToSection('apexdrawn-case-study');
         break;
 
       case 'manifesto':
@@ -276,23 +300,6 @@ export default function InteractiveCLI({
         ]);
         break;
 
-      case 'marvel':
-        setHistory((prev) => [
-          ...prev,
-          {
-            id: newId,
-            command: rawCmd,
-            response: [
-              'MARVEL UNIVERSE RESEARCH VAULT:',
-              '• Quantum Realm Chrono-mechanics & Multiversal Incursions',
-              '• Ask Kabir your most difficult MCU & comic continuity debate questions!',
-            ],
-            type: 'warning',
-          },
-        ]);
-        if (onNavigateToSection) onNavigateToSection('marvel');
-        break;
-
       case 'clear':
         setHistory([]);
         break;
@@ -386,7 +393,7 @@ export default function InteractiveCLI({
               <span className="text-zinc-500 uppercase tracking-wider text-[9px] shrink-0">
                 PILLS:
               </span>
-              {['whoami', 'skills', 'terra', 'projects', 'awards', 'marvel', 'help'].map((cmd) => (
+              {['whoami', 'skills', 'terra', 'apexdrawn', 'projects', 'awards', 'help'].map((cmd) => (
                 <button
                   key={cmd}
                   onClick={() => executeCommand(cmd)}

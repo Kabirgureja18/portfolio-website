@@ -52,8 +52,6 @@ const SECTION_ALIASES: Record<string, string> = {
   fashion: 'fashion-brand',
   products: 'fashion-brand',
   'fashion-brand': 'fashion-brand',
-  marvel: 'marvel',
-  comics: 'marvel',
   socials: 'socials',
   github: 'socials',
   network: 'socials',

@@ -69,7 +69,7 @@ export default function ContactSection({ email = 'kabirgureja08@gmail.com', phon
           {/* Left Column: Direct Contact Details & Quick Copy */}
           <div className="lg:col-span-5 space-y-8">
             <p className="text-base sm:text-lg font-sans text-zinc-300 leading-relaxed">
-              Whether you need a bespoke website built at student-friendly pricing, want to collaborate on robotics/AI prototypes, or discuss streetwear and Marvel theories, Kabir’s channels are open.
+              Whether you need a bespoke website built at student-friendly pricing, want to collaborate on robotics/AI prototypes, or discuss design and software engineering, Kabir’s channels are open.
             </p>
 
             {/* Contact Channels Grid */}
@@ -219,7 +219,7 @@ export default function ContactSection({ email = 'kabirgureja08@gmail.com', phon
                       <option>AI / Software Experiment Inquiry</option>
                       <option>Streetwear Apparel Brand Drop Inquiry</option>
                       <option>Artwork & Billboard Design</option>
-                      <option>General Curious Greeting & Marvel Lore</option>
+                      <option>General Curious Greeting & Tech Discussion</option>
                     </select>
                   </div>
 

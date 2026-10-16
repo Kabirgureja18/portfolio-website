@@ -32,8 +32,9 @@ export default function LSStudioMockup({
 
   const isFarmVerse = project.id === 'farmverse' || project.id === 'farmcraft';
   const isTerra = project.id === 'terra';
-  const liveUrl = project.liveUrl || (isFarmVerse ? 'https://farmverse-technoxian.lovable.app/' : (isTerra ? 'https://terra-by-kabir.lovable.app/#contact' : null));
-  const liveDomain = isFarmVerse ? 'farmverse-technoxian.lovable.app' : (isTerra ? 'terra-by-kabir.lovable.app/#contact' : null);
+  const isApexDrawn = project.id === 'apexdrawn';
+  const liveUrl = project.liveUrl || (isApexDrawn ? 'https://apexdrawn.com/' : (isFarmVerse ? 'https://farmverse-technoxian.lovable.app/' : (isTerra ? 'https://terra-by-kabir.lovable.app/#contact' : null)));
+  const liveDomain = isApexDrawn ? 'apexdrawn.com' : (isFarmVerse ? 'farmverse-technoxian.lovable.app' : (isTerra ? 'terra-by-kabir.lovable.app/#contact' : null));
 
   const handleClipChange = (idx: number) => {
     playPop(500 + idx * 30);

@@ -20,7 +20,7 @@ export default function MiniGameEasterEgg({ isOpen, onClose }: MiniGameEasterEgg
 
   const [discovered, setDiscovered] = useState<{ [key: string]: boolean }>({
     terraCore: false,
-    marvelTheory: false,
+    apexTelemetry: false,
     tabOverload: false,
     secretRevenue: false,
   });
@@ -35,20 +35,20 @@ export default function MiniGameEasterEgg({ isOpen, onClose }: MiniGameEasterEgg
     if (cmd === 'help') {
       newLogs.push(
         'AVAILABLE COMMANDS:',
-        '  scan          - Scan memory for undiscovered lab artifacts',
-        '  terra-core    - Inspect bio-algae robotic firmware node',
-        '  marvel-theory - Extract classified Kang multiverse paradox file',
-        '  tabs          - Inspect Kabir’s perpetual 64+ browser tab cache',
-        '  revenue       - Check verifiable ₹27,500 milestone ledger',
-        '  confetti      - Trigger celebratory particle surge',
-        '  clear         - Clear terminal screen'
+        '  scan           - Scan memory for undiscovered lab artifacts',
+        '  terra-core     - Inspect bio-algae robotic firmware node',
+        '  apex-telemetry - Extract 3D circuit spline generator telemetry',
+        '  tabs           - Inspect Kabir’s perpetual 64+ browser tab cache',
+        '  revenue        - Check verifiable ₹27,500 milestone ledger',
+        '  confetti       - Trigger celebratory particle surge',
+        '  clear          - Clear terminal screen'
       );
     } else if (cmd === 'scan') {
       const remaining = Object.values(discovered).filter((v) => !v).length;
       newLogs.push(
         `[SCAN_RESULTS] Artifacts discovered: ${4 - remaining}/4.`,
         remaining > 0
-          ? `Try exploring: ${!discovered.terraCore ? 'terra-core ' : ''}${!discovered.marvelTheory ? 'marvel-theory ' : ''}${!discovered.tabOverload ? 'tabs ' : ''}${!discovered.secretRevenue ? 'revenue ' : ''}`
+          ? `Try exploring: ${!discovered.terraCore ? 'terra-core ' : ''}${!discovered.apexTelemetry ? 'apex-telemetry ' : ''}${!discovered.tabOverload ? 'tabs ' : ''}${!discovered.secretRevenue ? 'revenue ' : ''}`
           : '🌟 ALL 4 ARTIFACTS UNLOCKED! KABIR.EXE MASTER DISCOVERER ACHIEVED!'
       );
     } else if (cmd === 'terra-core') {
@@ -58,11 +58,11 @@ export default function MiniGameEasterEgg({ isOpen, onClose }: MiniGameEasterEgg
         'Robotic Algae Dispersal Protocol verified: Cyanobacteria consortia seeded.'
       );
       triggerConfetti();
-    } else if (cmd === 'marvel-theory') {
-      setDiscovered((prev) => ({ ...prev, marvelTheory: true }));
+    } else if (cmd === 'apex-telemetry' || cmd === 'apexdrawn') {
+      setDiscovered((prev) => ({ ...prev, apexTelemetry: true }));
       newLogs.push(
-        '🛡️ [UNLOCKED #2: MULTIVERSE PARADOX]',
-        'Secret file: "Tony Stark’s nanotech was quantum-entangled with Pym particles in 2023."'
+        '🏎️ [UNLOCKED #2: APEXDRAWN TELEMETRY]',
+        'Procedural spline extruded: 12-turn Grand Prix circuit generated at 60 FPS in WebGL.'
       );
       triggerConfetti();
     } else if (cmd === 'tabs') {
@@ -152,8 +152,8 @@ export default function MiniGameEasterEgg({ isOpen, onClose }: MiniGameEasterEgg
             <span className={discovered.terraCore ? 'text-emerald-400' : 'text-zinc-500'}>
               🌱 T.E.R.R.A. {discovered.terraCore ? '✓' : '○'}
             </span>
-            <span className={discovered.marvelTheory ? 'text-red-400' : 'text-zinc-500'}>
-              🛡️ MARVEL {discovered.marvelTheory ? '✓' : '○'}
+            <span className={discovered.apexTelemetry ? 'text-red-400' : 'text-zinc-500'}>
+              🏎️ APEX {discovered.apexTelemetry ? '✓' : '○'}
             </span>
             <span className={discovered.tabOverload ? 'text-amber-400' : 'text-zinc-500'}>
               📑 TABS {discovered.tabOverload ? '✓' : '○'}
@@ -184,7 +184,7 @@ export default function MiniGameEasterEgg({ isOpen, onClose }: MiniGameEasterEgg
               autoFocus
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Type 'scan', 'terra-core', 'marvel-theory', 'tabs', 'revenue'..."
+              placeholder="Type 'scan', 'terra-core', 'apex-telemetry', 'tabs', 'revenue'..."
               className="flex-1 bg-transparent text-xs font-mono-code text-emerald-100 placeholder-emerald-800 focus:outline-none"
             />
             <button

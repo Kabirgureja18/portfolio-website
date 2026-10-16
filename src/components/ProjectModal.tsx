@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ProjectItem } from '../types';
-import { X, ExternalLink, Cpu, Terminal, CheckCircle2, ArrowRight } from 'lucide-react';
+import { X, ExternalLink, Cpu, Terminal, CheckCircle2, ArrowRight, Share2 } from 'lucide-react';
 
 interface ProjectModalProps {
   project: ProjectItem | null;
@@ -9,7 +10,49 @@ interface ProjectModalProps {
 }
 
 export default function ProjectModal({ project, onClose, onNavigateToSection }: ProjectModalProps) {
+  const [shareFeedback, setShareFeedback] = useState<string | null>(null);
+
   if (!project) return null;
+
+  const handleShare = async (title?: string, text?: string) => {
+    const shareUrl = window.location.origin + '/#projects';
+    const shareData = {
+      title: title || `${project.title} — Kabir Portfolio`,
+      text: text || `${project.title}: ${project.summary}`,
+      url: shareUrl,
+    };
+
+    if (typeof navigator !== 'undefined' && navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+      try {
+        await navigator.share(shareData);
+        setShareFeedback('Shared successfully!');
+        setTimeout(() => setShareFeedback(null), 2500);
+        return;
+      } catch (err: unknown) {
+        if (err instanceof Error && err.name === 'AbortError') {
+          return;
+        }
+      }
+    }
+
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(`${title || project.title} (${shareUrl})`);
+        setShareFeedback('Link copied to clipboard!');
+      } else {
+        const input = document.createElement('textarea');
+        input.value = `${title || project.title} (${shareUrl})`;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+        setShareFeedback('Link copied to clipboard!');
+      }
+    } catch {
+      setShareFeedback(project.title);
+    }
+    setTimeout(() => setShareFeedback(null), 2500);
+  };
 
   return (
     <AnimatePresence>
@@ -43,6 +86,14 @@ export default function ProjectModal({ project, onClose, onNavigateToSection }: 
             </div>
 
             <div className="flex items-center gap-2">
+              <button
+                onClick={() => handleShare()}
+                className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-zinc-900 border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white text-xs font-mono-code transition-all cursor-pointer"
+                title="Share Project"
+              >
+                <Share2 className="w-3.5 h-3.5 text-zinc-300" />
+                <span className="hidden sm:inline">SHARE</span>
+              </button>
               <span
                 className="text-[10px] font-mono-code px-2 py-0.5 rounded font-bold uppercase"
                 style={{
@@ -143,19 +194,26 @@ export default function ProjectModal({ project, onClose, onNavigateToSection }: 
                         </span>
                       </div>
 
-                      <div>
+                      <div className="flex items-center justify-between">
                         <h4 className="text-xs font-sans font-bold text-zinc-100">
                           {clip.title}
                         </h4>
-                        <p className="text-[11px] text-zinc-300 mt-0.5 leading-snug">
-                          {clip.caption}
-                        </p>
-                        {clip.source && (
-                          <p className="text-[9px] font-mono-code text-zinc-500 mt-1">
-                            {clip.source}
-                          </p>
-                        )}
+                        <button
+                          onClick={() => handleShare(`${project.title} - ${clip.title}`, clip.caption)}
+                          className="p-1 rounded hover:bg-zinc-800 text-zinc-400 hover:text-white transition-colors"
+                          title="Share Clip"
+                        >
+                          <Share2 className="w-3 h-3 text-emerald-400" />
+                        </button>
                       </div>
+                      <p className="text-[11px] text-zinc-300 mt-0.5 leading-snug">
+                        {clip.caption}
+                      </p>
+                      {clip.source && (
+                        <p className="text-[9px] font-mono-code text-zinc-500 mt-1">
+                          {clip.source}
+                        </p>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -269,6 +327,29 @@ export default function ProjectModal({ project, onClose, onNavigateToSection }: 
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               )}
+              {project.id === 'apexdrawn' && (
+                <>
+                  <button
+                    onClick={() => {
+                      onClose();
+                      onNavigateToSection('apexdrawn-case-study');
+                    }}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#ffb020] hover:bg-[#ffc14d] text-zinc-950 text-xs font-mono-code font-bold uppercase transition-all shadow-md cursor-pointer"
+                  >
+                    <span>READ CASE STUDY</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                  <a
+                    href="https://apexdrawn.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-mono-code font-bold uppercase transition-all shadow-md"
+                  >
+                    <span>LAUNCH APEXDRAWN (apexdrawn.com)</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </>
+              )}
               {project.id === 'farmverse' && (
                 <a
                   href="https://farmverse-technoxian.lovable.app/"
@@ -295,6 +376,14 @@ export default function ProjectModal({ project, onClose, onNavigateToSection }: 
           </div>
         </motion.div>
       </div>
+
+      {/* Share Toast */}
+      {shareFeedback && (
+        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-2.5 rounded-xl bg-zinc-900 border border-emerald-500/60 text-white shadow-2xl font-mono-code text-xs">
+          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+          <span>{shareFeedback}</span>
+        </div>
+      )}
     </AnimatePresence>
   );
 }
