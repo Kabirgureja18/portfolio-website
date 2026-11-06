@@ -1,32 +1,38 @@
-# Kabir Gureja — Project Lab
+# Kabir Gureja — Project Portfolio
 
-Student developer and maker based in Indore. Projects below include working code, prototypes and ideas; **not everything is completed or released**.
+Student builder in Indore. This page separates shipped work, active builds, early prototypes, and ideas. A project listed here is not automatically complete or field-tested.
 
-## Software & web
-- [Vibe101](https://github.com/Kabirgureja18/vibe101website) — active build, AI coding guide and tools.
-- [Portfolio](https://github.com/Kabirgureja18/portfolio-website) — existing site, updates pending.
-- [VisionBridge](https://github.com/Kabirgureja18/VisionBridgeCopy) — repository available, development status under review.
-- AI Loading Page & Animation Replacer — planned.
-- Sandbox Environment Extractor — concept.
-- Context Switch Extension — idea/backlog.
-- WebShooter — experimental.
-- BMX Multiplayer Game — game prototype/design.
-- AI Browser; Jarvis personal assistant; AI Fitting Room; Farmcraft — concepts.
-- Student Web Agency; Ankur & Sarvesh architecture website — business/web projects.
+## Building now
 
-## Hardware & environment
-- [T.E.R.R.A.](https://github.com/Kabirgureja18/terra-competition-site) — prototype/research into drone-assisted algae application for degraded land; real-world feasibility not yet established.
-- RiverSpark — early-stage water/paddle turbine charger.
-- Wireless Power Transfer — exploratory idea.
+- **Vibe101** — Active build. A practical vibecoding guide and project workspace for discovering tools, using prompts, and learning through project blueprints. [Repository](https://github.com/Kabirgureja18/vibe101website) · [Live guide](https://vibe101-bykabir.vercel.app/guide)
+- **Personal portfolio** — Website is online; updates and deployment connection are still being worked on. [Repository](https://github.com/Kabirgureja18/portfolio-website) · [Website](https://kabirgureja.vercel.app)
+- **T.E.R.R.A.** — Won Viksit Bharat 2026. The project explores drone-assisted algae application for degraded land. Prototype and research stage; field performance and real-world feasibility are not yet validated. [Project site repository](https://github.com/Kabirgureja18/terra-competition-site) · [Website](https://terra-1mf.vercel.app)
 
-## Creative work
-- Root India clothing brand — concept.
-- FreshenUP — concept.
-- *Creativity! The Master Mind* — book project.
-- *Bombing of the Seven Wonders vs N.E.X.T.* — comic project.
-- Photography & painting — portfolio work.
+## Early-stage projects
 
-## Learning & competitions
-Robotics events, MUN, hackathons, innovation competitions and certifications. Entries and awards will be documented with evidence.
+- **RiverSpark** — Early design/build planning for a portable water- or paddle-powered charger. No completed working prototype confirmed.
+- **VisionBridge** — Early exploration. The public repository is a fork of an existing project, not an original implementation claim. [Repository](https://github.com/Kabirgureja18/VisionBridgeCopy)
+- **BMX League** — Game prototype and design exploration for 1v1 and 2v2 BMX football, with customisable controls and progression.
 
-[Portfolio](https://kabirgureja.vercel.app/) · [LinkedIn](https://www.linkedin.com/in/kabir-gureja-189558409/)
+## Planned and experimental software
+
+- **AI Loading Page + Animation Replacer** — Planned.
+- **Sandbox Environment Extractor** — Concept.
+- **Context Switch browser extension** — Backlog idea.
+- **WebShooter** — Experimental camera and gesture-control concept.
+- **Personal AI browser** and **Jarvis assistant** — Concepts.
+- **AI Fitting Room** and **Farmcraft** — Concepts.
+
+## Other explorations
+
+- **Student web agency** — Early business idea.
+- **Ankur & Sarvesh architecture website** — Website design/build project.
+- **Wireless power transfer** — Exploratory concept.
+- **Root India** clothing brand and **FreshenUP** — Concepts.
+- **Creativity! The Master Mind** — Book project.
+- **Bombing of the Seven Wonders vs N.E.X.T.** — Comic project.
+- **Photography and painting** — Creative portfolio work.
+
+## Links
+
+[GitHub profile](https://github.com/Kabirgureja18) · [Portfolio](https://kabirgureja.vercel.app) · [LinkedIn](https://www.linkedin.com/in/kabir-gureja-189558409/)
