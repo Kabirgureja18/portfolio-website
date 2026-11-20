@@ -1,0 +1,31 @@
+{
+  "profile": {
+    "name": "Kabir Gureja",
+    "heroLines": ["BUILDING.", "EXPERIMENTING.", "CREATING."],
+    "tagline": "I build things I wish existed.",
+    "intro": "A student who spends an unreasonable amount of time turning random ideas into actual projects.",
+    "email": "",
+    "dateOfBirth": "",
+    "photo": "/images/me.jpg"
+  },
+  "projects": [
+    { "slug": "terra", "title": "T.E.R.R.A.", "subtitle": "Terrain-Enhancing Regeneration via Robotic Algae", "category": ["Robotics", "AI", "Environment"], "status": "Awaiting Kabir's project details", "description": "", "url": "", "media": [] },
+    { "slug": "farmcraft", "title": "FarmCraft", "subtitle": "", "category": ["Experiment"], "status": "Awaiting Kabir's project details", "description": "", "url": "", "media": [] },
+    { "slug": "jarvis", "title": "JARVIS", "subtitle": "Personal desktop-friendly AI/chatbot/pet concept", "category": ["AI"], "status": "Awaiting Kabir's project details", "description": "", "url": "", "media": [] },
+    { "slug": "ai-browser", "title": "AI Browser", "subtitle": "Kabir's first AI-based browser", "category": ["Software", "AI"], "status": "Awaiting Kabir's project details", "description": "", "url": "", "media": [] },
+    { "slug": "personal-ai", "title": "Personal AI", "subtitle": "", "category": ["AI"], "status": "In development", "description": "", "url": "", "media": [] }
+  ],
+  "business": { "maximumEarnedINR": 27500, "activities": ["Website building", "Affordable student websites", "Dropshipping", "Online selling", "Business experiments", "Interest in stocks and trading"] },
+  "achievements": [],
+  "certificates": [],
+  "media": [],
+  "artwork": [],
+  "photography": [],
+  "advertising": [],
+  "aiProjects": [],
+  "clothing": { "name": "", "description": "", "url": "", "media": [] },
+  "funFacts": [],
+  "live": { "currentlyBuilding": "", "currentObsession": "", "openTabs": [] },
+  "interests": { "marvel": { "community": "Marvel fan theory community", "questionRecipient": "" }, "gaming": [], "sports": ["Hockey"] },
+  "socials": { "instagram": "", "github": "", "linkedin": "" }
+}

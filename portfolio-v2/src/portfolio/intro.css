@@ -1,0 +1,14 @@
+.constructed-intro{background:#0d0e82;overflow:hidden}
+.construction-logo{position:relative;display:flex;flex-direction:column;align-items:center;width:min(42vw,320px);will-change:transform}
+.construction-logo svg{display:block;width:100%;height:auto;overflow:visible}
+.construction-logo svg path{fill:#f8fae3;stroke:#f8fae3;stroke-width:1.3;stroke-linejoin:round}
+.construction-word{font:700 clamp(1.5rem,4vw,2.75rem)/1 'DM Sans',sans-serif;letter-spacing:-.05em;color:#f8fae3;margin-top:.08em}
+.construction-cursor{position:absolute;font:normal clamp(1.2rem,2vw,1.8rem)/1 sans-serif;color:#2cff05;opacity:0}
+.cursor-one{left:48%;top:0}.cursor-two{left:56%;top:18%}.cursor-three{left:12%;top:55%}.cursor-four{right:4%;top:60%}.cursor-five{left:48%;top:52%}
+.brand-link{display:inline-flex;align-items:center;gap:.55rem}
+.brand-mark{display:block;width:28px;height:27px;fill:currentColor}
+@media(max-width:760px){.construction-logo{width:min(57vw,270px)}.brand-mark{width:24px;height:23px}}
+.construction-cursor{font-size:0;width:18px;height:22px}
+.construction-cursor::before{content:"";display:block;width:100%;height:100%;background:currentColor;clip-path:polygon(0 0,0 76%,22% 57%,40% 96%,56% 89%,38% 51%,68% 50%)}
+.construction-cursor{left:0;top:0;right:auto;pointer-events:none;will-change:transform}
+@media (pointer:fine){.constructed-intro{cursor:none}}

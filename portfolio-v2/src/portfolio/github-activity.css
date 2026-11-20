@@ -1,0 +1,28 @@
+.github-activity{padding:clamp(5rem,9vw,9rem) 6vw;background:var(--palette-light);color:var(--palette-deep);min-width:0}
+.github-activity-header{display:flex;align-items:end;justify-content:space-between;gap:2rem;margin-bottom:3rem}
+.github-activity-header h2{font:700 clamp(4.5rem,9vw,9rem)/.85 'Barlow Condensed',sans-serif;letter-spacing:-.035em;margin:0}
+.github-activity-header h2 span{color:var(--palette-blue)}.github-activity-header>a{color:inherit;font-size:.85rem}
+.github-card{border:1px solid var(--palette-deep);padding:clamp(1.2rem,3vw,2.5rem);width:100%;max-width:1000px;min-width:0;box-sizing:border-box}
+.github-goal{background:var(--palette-deep);color:var(--palette-light);padding:clamp(1.2rem,3vw,2.2rem);margin-bottom:2rem}
+.github-goal-title,.github-goal-caption{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font:500 .65rem/1.4 'DM Mono',monospace;letter-spacing:.04em}
+.github-goal-title span:last-child{color:#c1c9ee}
+.github-goal-main{display:flex;justify-content:space-between;align-items:end;gap:1rem;margin:2rem 0 1.4rem}
+.github-goal-main strong{font:700 clamp(4.5rem,9vw,8rem)/.8 'Barlow Condensed',sans-serif;letter-spacing:-.04em;color:var(--palette-light)}
+.github-goal-main div>span{display:inline-block;margin-left:.4rem;font-size:.8rem}
+.github-goal-main p{margin:0;text-align:right;font-size:.8rem;line-height:1.45}.github-goal-main b{color:var(--palette-accent);font-weight:700}
+.github-goal-track{height:.55rem;background:rgba(248,250,227,.22);overflow:hidden}.github-goal-track span{display:block;height:100%;background:var(--palette-accent);transition:width .6s ease}
+.github-goal-caption{margin-top:.7rem}.github-goal-caption span:last-child{color:var(--palette-accent)}
+.github-card-heading{display:flex;gap:.6rem;align-items:baseline;flex-wrap:wrap;margin-bottom:1.4rem}.github-card-heading strong{font-size:1rem}.github-card-heading span{font-size:.85rem}
+.github-grid-scroll{width:100%;min-width:0;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;padding:4px 3px 1rem;box-sizing:border-box}
+.github-grid-scroll:focus-visible,.github-repo-card a:focus-visible,.github-overview a:focus-visible{outline:2px solid var(--palette-deep);outline-offset:2px}
+.github-grid{width:max-content;display:grid;grid-template-rows:repeat(7,11px);grid-auto-columns:11px;grid-auto-flow:column;gap:4px}
+.github-day,.github-grid-meta i{display:block;width:11px;height:11px;border:0;padding:0;background:#dae1d8;cursor:pointer}
+.github-day[data-level="1"],.github-grid-meta i[data-level="1"]{background:#a4bbf4}.github-day[data-level="2"],.github-grid-meta i[data-level="2"]{background:#7396ee}.github-day[data-level="3"],.github-grid-meta i[data-level="3"]{background:var(--palette-blue)}.github-day[data-level="4"],.github-grid-meta i[data-level="4"]{background:var(--palette-deep)}
+.github-day:focus-visible{outline:2px solid var(--palette-deep);outline-offset:2px}.github-grid-meta{display:flex;justify-content:space-between;gap:.7rem;flex-wrap:wrap;font:500 .65rem 'DM Mono',monospace}.github-grid-meta span:last-child{display:flex;gap:4px;align-items:center}.github-grid-meta i{cursor:default}
+.github-work-heading{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin:3.5rem 0 1.3rem}.github-work-heading h3{font:700 clamp(2rem,3vw,3rem)/1 'Barlow Condensed',sans-serif;margin:0}.github-work-heading span,.github-overview>div>span{font:500 .7rem 'DM Mono',monospace}
+.github-featured{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}.github-repo-card{border:1px solid var(--line);padding:1.4rem;display:flex;flex-direction:column;min-width:0}.github-repo-card h4{font-size:1.05rem;margin:0;overflow-wrap:anywhere}.github-repo-card a,.github-overview a{color:inherit}.github-repo-card p{font-size:.88rem;line-height:1.5;margin:1rem 0 1.5rem;overflow-wrap:anywhere;flex:1}.github-repo-meta{display:flex;gap:.6rem 1rem;flex-wrap:wrap;font:500 .65rem 'DM Mono',monospace}.github-repo-meta time{width:100%}
+.github-overview{display:grid;grid-template-columns:1fr 1fr 2fr;gap:2rem;margin-top:2.5rem;border-top:1px solid var(--line);padding-top:1.5rem}.github-overview strong{display:block;margin-top:.6rem;font-size:1rem;overflow-wrap:anywhere}.github-overview ul{list-style:none;margin:.6rem 0 0;padding:0}.github-overview li{font-size:.8rem;line-height:1.7;overflow-wrap:anywhere}.github-overview time{white-space:nowrap}.github-fork{font-size:.65rem;border:1px solid currentColor;padding:.1rem .3rem;margin:0 .3rem}
+.github-state{margin:0}.github-state button,.github-retry{font:inherit;color:inherit;background:none;border:1px solid;padding:.6rem;cursor:pointer}
+@media(max-width:700px){.github-activity-header{align-items:start;flex-direction:column;gap:1rem}.github-activity-header h2{font-size:clamp(3.7rem,15vw,5.5rem)}.github-grid{grid-template-rows:repeat(7,13px);grid-auto-columns:13px}.github-day{width:13px;height:13px}.github-featured,.github-overview{grid-template-columns:1fr}.github-overview{gap:1.4rem}.github-work-heading{align-items:start;flex-direction:column;gap:.5rem}.github-card{padding:1.1rem}}
+@media(max-width:380px){.github-goal-main{align-items:start;flex-direction:column}.github-goal-main p{text-align:left}.github-goal-main strong{font-size:4.5rem}}
+@media(prefers-reduced-motion:reduce){.github-goal-track span{transition:none}}

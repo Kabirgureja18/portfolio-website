@@ -1,0 +1,63 @@
+.interests {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  scroll-margin-top: 74px;
+}
+.interests .interest-index {
+  min-width: 0;
+}
+.interest-index > p {
+  margin: 0 0 1.5rem;
+  font-size: 1.05rem;
+}
+.interest-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: .8rem 0;
+  border: 0;
+  border-top: 1px solid rgb(245 241 232 / 38%);
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+/* The button supplies the origin. The section supplies the clipping boundary. */
+.interest-item::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  top: 50%;
+  left: 35%;
+  width: clamp(27rem, 66vw, 68rem);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse closest-side, var(--interest-accent), transparent);
+  opacity: 0;
+  transition: opacity 360ms ease;
+}
+.interest-item[aria-pressed="true"]::before { opacity: .35; }
+.interest-item:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.interest-item img { width: 5.5rem; height: 4rem; object-fit: cover; }
+.interest-item strong { font-weight: 500; font-size: 1.2rem; }
+.interest-item small { display: block; font-size: .8rem; }
+@media (prefers-reduced-motion: reduce) {
+  .interest-item::before { transition: none; }
+}
+
+@media (max-width: 760px) {
+  #interests.interests.world { min-height: 0; height: auto; padding: 5.25rem 6vw 3rem; scroll-margin-top: 76px; }
+  #interests.interests.world h2 { font-size: clamp(3rem, 13.5vw, 5.5rem); line-height: 1.05; max-width: 100%; overflow-wrap: normal; margin: 0 0 1.75rem; }
+  .interest-index > p { line-height: 1.5; }
+  .interest-item { gap: 1rem; align-items: center; }
+  #interests .interest-item img { width: 5.5rem; height: 4rem; flex: 0 0 5.5rem; object-fit: cover; }
+  .interest-item strong { min-width: 0; line-height: 1.25; }
+  .interest-item small { margin-top: .35rem; line-height: 1.35; }
+  .first-quote .scrambled-text { margin: 0; max-width: none; }
+}

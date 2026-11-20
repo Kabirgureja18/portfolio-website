@@ -1,0 +1,83 @@
+@font-face {
+  font-family: Kalam;
+  src: url('/fonts/kalam/latin.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: Kalam;
+  src: url('/fonts/kalam/latin-ext.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+2020,U+20A0-20AB;
+}
+@font-face {
+  font-family: Kalam;
+  src: url('/fonts/kalam/devanagari.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0900-097F,U+1CD0-1CF4,U+1CF7-1CF9,U+200C-200D,U+20A8,U+20B9,U+25CC,U+A830-A839,U+A8E0-A8FF;
+}
+
+.guestbook {
+  padding: clamp(4rem, 8vw, 9rem) 5vw;
+  background: #e4ded0;
+  color: #111;
+  border-top: 1px solid currentColor;
+  scroll-margin-top: 72px;
+}
+.guestbook-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem 3rem; flex-wrap: wrap; }
+.guestbook-heading h2 { margin: 0; font: 400 clamp(3.5rem, 7.4vw, 8rem)/.94 'Instrument Serif', Georgia, serif; letter-spacing: -.055em; }
+.guestbook-heading p { margin: 0; font-size: 1rem; }
+.guestbook-feedback { margin: 1rem 0; min-height: 1.5em; }
+.guestbook-load-error button { background: transparent; border: none; text-decoration: underline; cursor: pointer; font: inherit; }
+.guestbook-wall { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr)); align-items: start; gap: clamp(1rem, 2.2vw, 2rem); }
+.guestbook-note {
+  position: relative;
+  min-width: 0;
+  min-height: 15rem;
+  padding: clamp(1.15rem, 2vw, 2rem);
+  background: linear-gradient(176deg, #f5f1e8 74%, #eee8d9);
+  box-shadow: 0 2px 4px #33210018, 1px 7px 12px -9px #3321006b;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+.guestbook-note[data-composer="true"] { background: linear-gradient(176deg, #fff6c8 74%, #f3e8ac); }
+.guestbook-note[data-composer="false"]:nth-child(odd) { transform: rotate(-.5deg); }
+.guestbook-note[data-composer="false"]:nth-child(even) { transform: rotate(.5deg); }
+.guestbook-note:focus-within { outline: 2px solid #1936c8; outline-offset: 3px; }
+.guestbook-input-wrap { display: grid; flex: 1; min-height: 8rem; font: inherit; }
+.guestbook-input-wrap span, .guestbook-input-wrap textarea {
+  grid-area: 1/1;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100%;
+  min-width: 0;
+  border-radius: 0;
+  font: inherit;
+  color: inherit;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: transparent;
+}
+.guestbook-input-wrap span { visibility: hidden; }
+.guestbook-input-wrap textarea { resize: none; outline: none; overflow: hidden; }
+.guestbook-note .guestbook-hand { margin: 0; font: 400 1.4rem/1.45 Kalam, 'Segoe Print', cursive; white-space: pre-wrap; overflow-wrap: anywhere; }
+.guestbook-controls { margin-top: auto; display: flex; gap: .6rem; justify-content: space-between; align-items: center; }
+.guestbook-controls small { font-size: .73rem; max-width: 8rem; }
+.guestbook-controls button {
+  background: #111; color: #fff; border: none; min-height: 44px; padding: .55rem .9rem; white-space: nowrap;
+  font: inherit; font-size: .86rem; cursor: pointer;
+}
+.guestbook-controls button:disabled { background: #514e42; cursor: default; }
+.guestbook button:focus-visible { outline: 3px solid #1936c8; outline-offset: 3px; }
+@media (max-width: 540px) {
+  .guestbook-heading { display: grid; }
+  .guestbook-wall { gap: 1.1rem; }
+}
+

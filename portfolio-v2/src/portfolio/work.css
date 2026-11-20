@@ -1,0 +1,27 @@
+.work-showcase { background: var(--palette-blue); color: var(--palette-light); padding: clamp(4rem, 8vw, 8rem) 6vw; }
+.work-showcase-heading { display: flex; align-items: end; justify-content: space-between; gap: 2rem; margin-bottom: clamp(2.5rem, 5vw, 5rem); }
+.work-showcase-heading .label { margin-bottom: 1.5rem; }
+.work-showcase-heading h2 { font: 700 clamp(6rem, 15vw, 15rem)/.82 'Barlow Condensed', sans-serif; letter-spacing: -.045em; margin: 0; }
+.work-showcase-heading h2 span, .work-mark { color: var(--palette-accent); }
+.work-showcase-heading > p { max-width: 19rem; margin: 0 0 .35rem; line-height: 1.5; }
+.work-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(.8rem, 1.5vw, 1.5rem); }
+.work-card { min-width: 0; display: flex; flex-direction: column; border-top: 1px solid rgba(248,250,227,.65); padding-top: .8rem; }
+.work-card-media { display: grid; place-items: center; aspect-ratio: 4 / 3; overflow: hidden; background: var(--palette-deep); color: var(--palette-light); }
+.work-card-media img { display: block; width: 100%; height: 100%; object-fit: contain; transition: transform .35s ease; }
+.work-card-media-document img { object-fit: contain; padding: 8%; box-sizing: border-box; }
+.work-card-placeholder { justify-content: start; padding: 8%; box-sizing: border-box; }
+.work-card-placeholder > span { font: 700 clamp(2.5rem, 4vw, 5rem)/.8 'Barlow Condensed', sans-serif; letter-spacing: -.035em; }
+.work-card-collab { background: var(--palette-light); color: var(--palette-deep); }
+.work-card-body { flex: 1; display: flex; flex-direction: column; padding-top: 1.1rem; }
+.work-category { min-height: 2.4em; margin: 0 0 1rem; font: 600 .68rem/1.3 'DM Sans', sans-serif; text-transform: uppercase; letter-spacing: .06em; }
+.work-card h3 { margin: 0 0 .6rem; font: 700 clamp(1.7rem, 2.2vw, 2.6rem)/.95 'Barlow Condensed', sans-serif; }
+.work-card-body > p:not(.work-category) { margin: 0; max-width: 26ch; font-size: .86rem; line-height: 1.5; }
+.work-card-bottom { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .7rem; margin-top: auto; padding-top: 1.6rem; font-size: .72rem; }
+.work-card-bottom span { color: var(--palette-accent); }
+.work-card-bottom a { color: inherit; text-underline-offset: .2em; }
+.work-card a:focus-visible { outline: 2px solid var(--palette-accent); outline-offset: 4px; }
+@media (hover:hover) { .work-card-media:hover img { transform: scale(1.035); } .work-card-bottom a:hover { color: var(--palette-accent); } }
+@media (max-width: 1000px) { .work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1rem; } .work-card-placeholder > span { font-size: clamp(3rem, 8vw, 6rem); } }
+@media (max-width: 600px) { .work-showcase { padding: 4rem 5vw; } .work-showcase-heading { display: block; } .work-showcase-heading h2 { font-size: clamp(6.5rem, 26vw, 10rem); } .work-showcase-heading > p { margin-top: 1.5rem; font-size: .9rem; } .work-category { font-size: .62rem; } .work-card h3 { font-size: 1.65rem; } .work-card-body > p:not(.work-category) { font-size: .78rem; } }
+@media (max-width: 340px) { .work-grid { grid-template-columns: 1fr; } .work-category { min-height: 0; } }
+@media (prefers-reduced-motion: reduce) { .work-card-media img { transition: none; } }

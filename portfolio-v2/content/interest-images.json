@@ -1,0 +1,20 @@
+[
+  {
+    "id": "gaming",
+    "title": "Gaming",
+    "caption": "BMX League",
+    "image": "/images/interests/gaming.jpg",
+    "alt": "BMX League gameplay with orange ramps in the arena",
+    "accent": "#ff7729",
+    "source": "BMX League, gameplay-verified.png. Accent sampled at (485, 40) in the cropped JPEG."
+  },
+  {
+    "id": "robotics",
+    "title": "Robotics",
+    "caption": "T.E.R.R.A. concept model",
+    "image": "/images/interests/robotics.jpg",
+    "alt": "A render of the T.E.R.R.A. concept model",
+    "accent": "#90ece7",
+    "source": "T.E.R.R.A., work/model-fixed-desktop.png. Accent sampled at (185, 140) in the cropped JPEG."
+  }
+]
