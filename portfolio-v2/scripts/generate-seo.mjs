@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 
-const originalOrigin = 'https://kabir-gureja-portfolio.netlify.app'
+const originalOrigin = 'https://kabir-gureja.vercel.app'
 const origin = (process.env.SITE_ORIGIN || originalOrigin).replace(/\/$/, '')
 const routes = [
   { path: '/', title: 'Kabir Gureja | Developer, Innovator & Creative', description: "Explore Kabir Gureja's portfolio, featuring T.E.R.R.A., Vibe101, robotics, web development, creative projects and achievements.", heading: 'Kabir Gureja', body: 'Kabir Gureja is a student in Indore who builds robots and websites, takes photos, and explores branding and creative work. His projects include T.E.R.R.A., Vibe101 and RiverSpark.' },

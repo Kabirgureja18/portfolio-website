@@ -46,9 +46,9 @@ export function Intro() {
 
     paths.forEach(path => gsap.set(path, { fillOpacity: 0 }))
     const progress = { value: 0 }
+    const svgBox = mark!.getBoundingClientRect()
+    const stageBox = stage.current.getBoundingClientRect()
     const moveCursors = () => {
-      const svgBox = mark!.getBoundingClientRect()
-      const stageBox = stage.current!.getBoundingClientRect()
       paths.forEach((path, i) => {
         const half = lengths[i] / 2
         const secondHalf = i % 2 === 1
