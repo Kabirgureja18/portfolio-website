@@ -19,6 +19,8 @@ export interface CaseStudyFlipItem {
   description: string;
   image?: string;
   href: string;
+  external?: boolean;
+  linkLabel?: string;
   imageAlt?: string;
   background: string;
   foreground?: string;
@@ -129,7 +131,7 @@ function FlipCard({
             <h2 className="max-w-[16ch] text-balance text-[clamp(28px,3.25vw,48px)] font-semibold leading-[0.96] tracking-[-0.05em]">
               {item.title}
             </h2>
-            <p className="mt-[clamp(16px,1.8vw,24px)] max-w-[42rem] text-[clamp(13px,1.1vw,16px)] leading-[1.5] opacity-82">{item.description}</p><a className="case-link" href={item.href}>Explore project ↗</a>
+            <p className="mt-[clamp(16px,1.8vw,24px)] max-w-[42rem] text-[clamp(13px,1.1vw,16px)] leading-[1.5] opacity-82">{item.description}</p><a className="case-link" href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noopener noreferrer" : undefined}>{item.linkLabel ?? "Explore project ↗"}</a>
           </div>
         </div>
 
@@ -170,7 +172,7 @@ export function CaseStudyFlipStack({
 
   return (
     <div className={cn("case-study-stack", className)}>
-      <div className="case-study-static">{safeItems.map(item => <article key={item.href} style={{background:item.background,color:item.foreground}}><p>{item.eyebrow}</p><h3>{item.title}</h3><p>{item.description}</p><a href={item.href}>Explore project ↗</a></article>)}</div>
+      <div className="case-study-static">{safeItems.map(item => <article key={item.href} style={{background:item.background,color:item.foreground}}><p>{item.eyebrow}</p><h3>{item.title}</h3><p>{item.description}</p><a href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noopener noreferrer" : undefined}>{item.linkLabel ?? "Explore project ↗"}</a>{item.external && item.image && <img src={item.image} alt={item.imageAlt} loading="lazy" />}</article>)}</div>
       <div
         ref={stackRef}
         className="relative case-study-animated"
