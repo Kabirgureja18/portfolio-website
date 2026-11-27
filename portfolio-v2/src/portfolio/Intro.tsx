@@ -28,7 +28,7 @@ export function Intro() {
 
   useEffect(() => {
     if (!visible || step >= greetings.length) return
-    const delay = 200 - (145 * step / (greetings.length - 1))
+    const delay = 320 - (170 * step / (greetings.length - 1))
     const timer = window.setTimeout(() => setStep(value => value + 1), delay)
     return () => window.clearTimeout(timer)
   }, [visible, step])
@@ -91,7 +91,6 @@ export function Intro() {
       .to(stage.current, { backgroundColor: 'transparent', duration: .75, ease: 'power2.inOut' }, '<')
       .to(moving.current, { x, y, scale, duration: .9, ease: 'power3.inOut' }, '<')
       .to(paths, { fill: '#0d0e82', stroke: '#0d0e82', duration: .45 }, '-=.45')
-    timeline.current.timeScale(3)
     const finishOnResize = () => setVisible(false)
     window.addEventListener('resize', finishOnResize, { once: true })
     return () => { window.removeEventListener('pointermove', trackPointer); window.removeEventListener('resize', finishOnResize); timeline.current?.kill(); timeline.current = null; gsap.set(target, { clearProps: 'visibility,opacity' }) }
