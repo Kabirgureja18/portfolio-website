@@ -104,6 +104,5 @@ export function Intro() {
         <span className="construction-word">kabir.rrr</span>
       </div>}
     {step === greetings.length && [0, 1, 2, 3].map(i => <span key={i} className="construction-cursor" aria-hidden="true" />)}
-    <button className="intro-skip" type="button" onClick={() => setVisible(false)}>Skip intro</button>
   </div>
 }
