@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import type { KeyboardEvent } from 'react'
+import type { CSSProperties, KeyboardEvent } from 'react'
 import './guestbook.css'
 
 type Note = { id: string; message: string }
@@ -20,6 +20,14 @@ function mergeNotes(first: Note[], second: Note[]) {
   return [...new Map([...second, ...first].map(note => [note.id, note])).values()]
 }
 
+function noteStyle(id: string): CSSProperties {
+  let hash = 2166136261
+  for (let i = 0; i < id.length; i++) hash = Math.imul(hash ^ id.charCodeAt(i), 16777619)
+  const value = hash >>> 0
+  const colors = ['#fff0a6', '#f7cbd5', '#c9e3f0', '#d3e9c4', '#ddd1ed']
+  return { '--paper-color': colors[value % colors.length], '--note-rotation': `${(value % 701) / 100 - 3.5}deg`, '--note-shift': `${((value >>> 10) % 17) - 8}px` } as CSSProperties
+}
+
 export function Guestbook() {
   const [draft, setDraft] = useState(newNote)
   const [notes, setNotes] = useState<Note[]>([])
@@ -29,6 +37,8 @@ export function Guestbook() {
   const [loading, setLoading] = useState(true)
   const [loaded, setLoaded] = useState(false)
   const [reload, setReload] = useState(0)
+  const [selectedNote, setSelectedNote] = useState<Note | null>(null)
+  const dialog = useRef<HTMLDialogElement>(null)
   const wall = useRef<HTMLDivElement>(null)
   const editor = useRef<HTMLTextAreaElement>(null)
   const busy = useRef(false)
@@ -37,6 +47,10 @@ export function Guestbook() {
   const selectionAfterEdit = useRef<[number, number] | null>(null)
   const move = useRef<{ id: string; origin: DOMRect } | null>(null)
   const activeRequest = useRef<AbortController | null>(null)
+
+  useEffect(() => {
+    if (selectedNote && dialog.current && !dialog.current.open) dialog.current.showModal()
+  }, [selectedNote])
 
   useEffect(() => () => activeRequest.current?.abort(), [])
 
@@ -98,8 +112,8 @@ export function Guestbook() {
     } else {
       const destination = posted.getBoundingClientRect()
       animation = posted.animate([
-        { transform: `translate(${origin.left - destination.left}px, ${origin.top - destination.top}px)` },
-        { transform: 'translate(0, 0)' },
+        { transform: `translate(${origin.left - destination.left}px, ${origin.top - destination.top}px) scale(.92)` },
+        { transform: 'translate(0, var(--note-shift)) rotate(var(--note-rotation)) scale(1)' },
       ], { duration: 420, easing: 'cubic-bezier(.22,.75,.24,1)' })
       animation.finished.then(finish, finish)
     }
@@ -197,7 +211,7 @@ export function Guestbook() {
         const saving = composing && phase === 'saving'
         return <article key={note.id} data-composer={composing} data-note-id={note.id}
           className="guestbook-note" aria-label={composing ? 'Write a public note' : 'Public sticky note'}
-          style={composing && phase === 'placing' ? { visibility: 'hidden' } : undefined}>
+          style={{ ...(!composing ? noteStyle(note.id) : {}), ...(composing && phase === 'placing' ? { visibility: 'hidden' } : {}) }}>
           {composing ? <>
             <div className={`guestbook-input-wrap${saving ? ' guestbook-hand' : ''}`}>
               <span aria-hidden="true">{note.message + ' '}</span>
@@ -211,10 +225,16 @@ export function Guestbook() {
                 {phase === 'failed' ? 'Retry post' : saving ? 'Posting…' : 'Post note'}
               </button>
             </div>
-          </> : <p className="guestbook-hand">{note.message}</p>}
+          </> : <button className="guestbook-note-open" type="button" onClick={() => setSelectedNote(note)} aria-label={`Open note: ${note.message}`}><span className="guestbook-hand">{note.message}</span><span className="guestbook-read">Read note ↗</span></button>}
         </article>
       })}
     </div>
+    <dialog ref={dialog} className="guestbook-dialog" onClose={() => setSelectedNote(null)} aria-label="Full sticky note">
+      {selectedNote && <div className="guestbook-dialog-paper" style={noteStyle(selectedNote.id)}>
+        <button type="button" className="guestbook-dialog-close" aria-label="Close note" onClick={() => dialog.current?.close()}>×</button>
+        <p className="guestbook-hand">{selectedNote.message}</p>
+      </div>}
+    </dialog>
   </section>
 }
 

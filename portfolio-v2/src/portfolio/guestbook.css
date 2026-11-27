@@ -22,7 +22,7 @@
   unicode-range: U+0900-097F,U+1CD0-1CF4,U+1CF7-1CF9,U+200C-200D,U+20A8,U+20B9,U+25CC,U+A830-A839,U+A8E0-A8FF;
 }
 
-.guestbook {
+ .guestbook {
   padding: clamp(4rem, 8vw, 9rem) 5vw;
   background: #e4ded0;
   color: #111;
@@ -33,51 +33,49 @@
 .guestbook-heading h2 { margin: 0; font: 400 clamp(3.5rem, 7.4vw, 8rem)/.94 'Instrument Serif', Georgia, serif; letter-spacing: -.055em; }
 .guestbook-heading p { margin: 0; font-size: 1rem; }
 .guestbook-feedback { margin: 1rem 0; min-height: 1.5em; }
-.guestbook-load-error button { background: transparent; border: none; text-decoration: underline; cursor: pointer; font: inherit; }
-.guestbook-wall { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr)); align-items: start; gap: clamp(1rem, 2.2vw, 2rem); }
-.guestbook-note {
+.guestbook-load-error button { background: transparent; border: none; text-decoration: underline; font: inherit; }
+.guestbook-wall { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); align-items: start; gap: clamp(.9rem, 2vw, 1.8rem); padding: 1.25rem .6rem; }
+.guestbook-note, .guestbook-dialog-paper {
+  --paper-color: #fff0a6;
   position: relative;
   min-width: 0;
   min-height: 15rem;
-  padding: clamp(1.15rem, 2vw, 2rem);
-  background: linear-gradient(176deg, #f5f1e8 74%, #eee8d9);
-  box-shadow: 0 2px 4px #33210018, 1px 7px 12px -9px #3321006b;
+  padding: clamp(1.15rem, 2vw, 1.8rem);
+  color: #22212b;
+  background-color: var(--paper-color);
+  background-image: linear-gradient(175deg, #ffffff38, transparent 30%, #4837000d), repeating-linear-gradient(0deg, transparent 0 3px, #624d2406 4px);
+  box-shadow: 1px 5px 8px #30281c30, 2px 12px 14px -10px #30281c66;
   display: flex;
   flex-direction: column;
-  gap: 1.4rem;
 }
-.guestbook-note[data-composer="true"] { background: linear-gradient(176deg, #fff6c8 74%, #f3e8ac); }
-.guestbook-note[data-composer="false"]:nth-child(odd) { transform: rotate(-.5deg); }
-.guestbook-note[data-composer="false"]:nth-child(even) { transform: rotate(.5deg); }
+.guestbook-note::after, .guestbook-dialog-paper::after { content: ''; position: absolute; right: 0; bottom: 0; width: 1.25rem; height: 1.25rem; background: linear-gradient(135deg, #00000012 50%, #e4ded0 51%); pointer-events: none; }
+.guestbook-note[data-composer="false"] { transform: translateY(var(--note-shift)) rotate(var(--note-rotation)); transition: transform .25s ease, box-shadow .25s ease; }
+.guestbook-note[data-composer="false"]:hover, .guestbook-note[data-composer="false"]:focus-within { z-index: 2; transform: translateY(-3px) rotate(0deg) scale(1.045); box-shadow: 2px 12px 20px #30281c55; }
 .guestbook-note:focus-within { outline: 2px solid #1936c8; outline-offset: 3px; }
+.guestbook-note-open { display: flex; flex-direction: column; flex: 1; width: 100%; min-width: 0; padding: 0; border: 0; background: transparent; text-align: left; color: inherit; }
+.guestbook-note-open .guestbook-hand { display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; }
+.guestbook-hand, .guestbook-note .guestbook-hand { margin: 0; font: 400 1.35rem/1.4 Kalam, 'Segoe Print', cursive; white-space: pre-wrap; overflow-wrap: anywhere; }
+.guestbook-read { margin-top: auto; padding-top: 1rem; font: 500 .7rem/1.2 'DM Sans', sans-serif; opacity: .7; }
 .guestbook-input-wrap { display: grid; flex: 1; min-height: 8rem; font: inherit; }
-.guestbook-input-wrap span, .guestbook-input-wrap textarea {
-  grid-area: 1/1;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  width: 100%;
-  min-width: 0;
-  border-radius: 0;
-  font: inherit;
-  color: inherit;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  background: transparent;
-}
+.guestbook-input-wrap span, .guestbook-input-wrap textarea { grid-area: 1/1; margin: 0; padding: 0; border: 0; width: 100%; min-width: 0; border-radius: 0; font: inherit; color: inherit; white-space: pre-wrap; overflow-wrap: anywhere; background: transparent; }
 .guestbook-input-wrap span { visibility: hidden; }
 .guestbook-input-wrap textarea { resize: none; outline: none; overflow: hidden; }
-.guestbook-note .guestbook-hand { margin: 0; font: 400 1.4rem/1.45 Kalam, 'Segoe Print', cursive; white-space: pre-wrap; overflow-wrap: anywhere; }
 .guestbook-controls { margin-top: auto; display: flex; gap: .6rem; justify-content: space-between; align-items: center; }
 .guestbook-controls small { font-size: .73rem; max-width: 8rem; }
-.guestbook-controls button {
-  background: #111; color: #fff; border: none; min-height: 44px; padding: .55rem .9rem; white-space: nowrap;
-  font: inherit; font-size: .86rem; cursor: pointer;
-}
-.guestbook-controls button:disabled { background: #514e42; cursor: default; }
-.guestbook button:focus-visible { outline: 3px solid #1936c8; outline-offset: 3px; }
+.guestbook-controls button { background: #111; color: #fff; border: none; min-height: 44px; padding: .55rem .9rem; white-space: nowrap; font: inherit; font-size: .86rem; }
+.guestbook-controls button:disabled { background: #514e42; }
+.guestbook button:focus-visible, .guestbook-dialog button:focus-visible { outline: 3px solid #1936c8; outline-offset: 3px; }
+.guestbook-dialog { width: min(90vw, 32rem); max-width: none; max-height: 85dvh; padding: 0; border: 0; background: transparent; color: #22212b; overflow: visible; }
+.guestbook-dialog::backdrop { background: #141427b8; }
+.guestbook-dialog-paper { min-height: 20rem; max-height: 85dvh; overflow-y: auto; padding: 4rem 2rem 2.5rem; }
+.guestbook-dialog-paper::after { background: linear-gradient(135deg, #00000012 50%, #20202b 51%); }
+.guestbook-dialog-close { position: absolute; right: 1rem; top: .8rem; border: 0; padding: .25rem .65rem; background: transparent; font: 2rem/1 sans-serif; color: inherit; }
 @media (max-width: 540px) {
   .guestbook-heading { display: grid; }
-  .guestbook-wall { gap: 1.1rem; }
+  .guestbook-wall { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem; padding: 1rem .35rem; }
+  .guestbook-note { min-height: 12rem; padding: 1rem; }
+  .guestbook-note[data-composer="true"] { grid-column: 1 / -1; min-height: 15rem; }
+  .guestbook-note .guestbook-hand { font-size: 1.1rem; }
 }
-
+@media (max-width: 330px) { .guestbook-wall { grid-template-columns: minmax(0, 1fr); } .guestbook-note[data-composer="true"] { grid-column: auto; } }
+@media (prefers-reduced-motion: reduce) { .guestbook-note[data-composer="false"] { transition: none; } }
