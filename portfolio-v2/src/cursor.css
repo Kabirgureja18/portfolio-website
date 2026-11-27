@@ -3,7 +3,8 @@
     cursor: url('/cursors/arrow.svg') 2 2, auto !important;
   }
 
-  a, button, summary, select, [role='button'], input[type='checkbox'], input[type='radio'] {
+  body :is(a, button, summary, select, [role='button'], input[type='checkbox'], input[type='radio']),
+  body :is(a, button, summary, [role='button']) * {
     cursor: url('/cursors/pointer.svg') 10 2, pointer !important;
   }
 
@@ -11,7 +12,7 @@
     cursor: url('/cursors/text.svg') 12 12, text !important;
   }
 
-  .constructed-intro, .constructed-intro * {
+  .constructed-intro.is-building, .constructed-intro.is-building * {
     cursor: none !important;
   }
 }

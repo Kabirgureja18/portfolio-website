@@ -98,7 +98,7 @@ export function Intro() {
   }, [visible, step])
 
   if (!visible) return null
-  return <div ref={stage} className="opening constructed-intro" aria-label="Portfolio introduction">
+  return <div ref={stage} className={`opening constructed-intro${step === greetings.length ? ' is-building' : ''}`} aria-label="Portfolio introduction">
     {step < greetings.length ? <span className="intro-greeting" key={step} lang={greetings[step][1]} dir="auto" aria-hidden="true">{greetings[step][0]}</span> :
       <div ref={moving} className="construction-logo">
         <svg viewBox="0 0 310 275" aria-hidden="true" focusable="false">{markPath.split(" Z M ").flatMap((part, index) => { const d = index === 0 ? part + " Z" : "M " + part; return [<path key={`${index}-a`} d={d} />, <path key={`${index}-b`} d={d} />] })}</svg>
