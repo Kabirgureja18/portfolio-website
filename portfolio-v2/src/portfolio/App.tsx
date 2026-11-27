@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 import { certificates } from './certificates'
 import { Contact } from './Contact'
+import { InstagramLinks } from './InstagramLinks'
 import { SiteEvolution } from './SiteEvolution'
 import { Guestbook } from './Guestbook'
 import { Journey } from './Journey'
@@ -102,7 +103,7 @@ function Home() {
  <section id="projects" className="new-section projects-new"><div className="section-heading"><p className="label"><DecryptedText text="THE THINGS I MAKE" animateOn="view" sequential speed={25} /></p><h2>Projects<span>.</span></h2><p>Some ideas make it out of my notes. These are a few of them.</p></div><CaseStudyFlipStack items={projects.map((p,index)=>({number:String(index+1).padStart(2,'0'),eyebrow:p.status,title:p.name,description:p.slug==='terra'?'Robotics, regeneration and a lot of questions.':p.slug==='vibe101'?'A guide for building with AI.':'A portable turbine charger.',href:'/projects/'+p.slug,image:p.slug==='terra'?'/images/interests/robotics.jpg':p.slug==='vibe101'?'/images/vibe101.png':p.slug==='riverspark'?'/images/riverspark.png':undefined,imageAlt:p.slug==='vibe101'?'Vibe101 graphic: Less tutorial hell. More things you actually build.':p.slug==='riverspark'?'RiverSpark turbine charger model with an 87% progress display.':'',background:index===1?'#3270e8':'#0d0e82',foreground:'#f8fae3'}))} /></section>
  <GitHubActivity />
  <Work />
- <SiteEvolution /><Contact /><Guestbook /></div>
+ <SiteEvolution /><Contact /><Guestbook /><footer className="portfolio-footer"><p>kabir.rrr</p><InstagramLinks label="Instagram accounts in footer" /></footer></div>
 }
 function App() {
  const path=location.pathname.replace(/\/+$/, '') || '/'

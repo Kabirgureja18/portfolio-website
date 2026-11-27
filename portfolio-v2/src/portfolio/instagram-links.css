@@ -1,0 +1,14 @@
+.instagram-links{display:flex;flex-wrap:wrap;gap:.35rem 1.8rem;align-items:center}
+.instagram-links a{position:relative;display:inline-flex;align-items:center;gap:.5rem;min-height:44px;color:inherit;text-decoration:none;font:500 .82rem 'DM Mono',monospace;transition:transform .2s ease}
+.instagram-links a svg{width:1.1rem;height:1.1rem;flex:none}
+.instagram-links a::after{content:'';position:absolute;left:0;right:0;bottom:.35rem;height:2px;background:linear-gradient(90deg,#f9a64b,#e64873,#a247c9);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+.instagram-links a:hover,.instagram-links a:focus-visible{transform:translateY(-2px)}
+.instagram-links a:hover::after,.instagram-links a:focus-visible::after{transform:scaleX(1)}
+.instagram-links a:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.instagram-arrow{font-size:.9em}
+.contact .instagram-links{margin:.3rem 0 1.6rem}
+.contact .instagram-links a{text-transform:none}
+.portfolio-footer{display:flex;align-items:center;justify-content:space-between;gap:1rem 2rem;flex-wrap:wrap;padding:1.5rem 5vw;background:#0d0e82;color:#f8fae3}
+.portfolio-footer p{margin:0;font:500 .72rem 'DM Mono',monospace}
+@media(max-width:600px){.instagram-links{gap:0 1rem}.portfolio-footer{align-items:flex-start;flex-direction:column}.portfolio-footer .instagram-links{flex-direction:column;align-items:flex-start}}
+@media(prefers-reduced-motion:reduce){.instagram-links a,.instagram-links a::after{transition:none}}

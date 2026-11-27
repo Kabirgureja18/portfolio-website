@@ -4,6 +4,7 @@ import './contact.css'
 import SocialFlipButton from '../components/vengeance/social-flip-button'
 import { LiquidButton } from '../components/vengeance/liquid-button'
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
+import { InstagramLinks } from './InstagramLinks'
 
 export function Contact() {
   const [status, setStatus] = useState('')
@@ -56,6 +57,7 @@ export function Contact() {
       {letter:'L', icon:<FaLinkedin />, label:'LinkedIn', href:'https://www.linkedin.com/in/kabir-gureja-189558409/'},
       {letter:'E', icon:<FaEnvelope />, label:'Email', href:'mailto:kabirgureja08@gmail.com'}
     ]} />
+    <InstagramLinks label="Instagram accounts" />
     <form className={`private-note ${sent ? 'private-note-sent' : ''}`} onSubmit={send} onChange={() => {receipt.current = ''; setStatus('')}}>
       <fieldset disabled={sending}>
         <legend>Send a private note</legend>
