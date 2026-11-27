@@ -1,0 +1,17 @@
+@media (any-pointer: fine) {
+  html, body, body * {
+    cursor: url('/cursors/arrow.svg') 2 2, auto !important;
+  }
+
+  a, button, summary, select, [role='button'], input[type='checkbox'], input[type='radio'] {
+    cursor: url('/cursors/pointer.svg') 10 2, pointer !important;
+  }
+
+  input:not([type='checkbox']):not([type='radio']):not([type='submit']):not([type='button']), textarea, [contenteditable='true'] {
+    cursor: url('/cursors/text.svg') 12 12, text !important;
+  }
+
+  .constructed-intro, .constructed-intro * {
+    cursor: none !important;
+  }
+}
