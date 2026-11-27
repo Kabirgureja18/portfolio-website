@@ -241,3 +241,6 @@ blockquote,.work-new{background:var(--palette-blue);color:var(--palette-light)}
 .evolution-arrow { display: block; padding-top: 1rem; font-size: 2rem; line-height: 1; }
 .evolution-closing { margin: 3.5rem 0 0; font-style: italic; }
 @media (max-width: 700px) { .evolution-versions { grid-template-columns: 1fr; gap: 1.5rem; } .evolution-arrow { padding: 0; transform: rotate(90deg); transform-origin: center; justify-self: start; } .evolution-closing { margin-top: 2.5rem; } }
+
+.case-coming-soon{display:inline-block;margin-top:1.5rem;font:600 .8rem 'DM Sans',sans-serif;letter-spacing:.04em;opacity:.8}
+.case-study-static img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;margin-top:1.5rem}
