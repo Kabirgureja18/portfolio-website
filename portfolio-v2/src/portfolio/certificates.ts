@@ -1,4 +1,5 @@
 export const certificates = [
+  { title: 'Design for Bharat 2026', description: 'Youth Innovation Challenge · State-level participation', file: 'design-for-bharat' },
   { title: 'IRIS National Fair', description: 'Grand Prize · T.E.R.R.A. · Team category · 2026', file: 'iris' },
   { title: 'NVIDIA Deep Learning Institute', description: 'Artificial Intelligence and Machine Learning · Certificate of Competency · 2026', file: 'nvidia' },
   { title: 'NxtWave GenAI Buildathon', description: 'Generative AI Mastery Workshop · Participation · 2025', file: 'nxtwave' },
