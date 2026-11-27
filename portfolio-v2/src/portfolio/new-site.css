@@ -30,13 +30,6 @@ body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif}
 .about-new h2 i{font-family:'Instrument Serif',serif;font-weight:400}
 .about-new>div{margin-top:2rem;max-width:32rem;font-size:1.15rem;line-height:1.65}
 .about-new .aside{font:italic 1.05rem 'Instrument Serif',serif;opacity:.8;margin-top:2.5rem}
-.interests.world{padding:8rem 6vw;grid-template-columns:1fr 2fr 2fr;gap:3vw;background:#1d2324;color:#f3f1e9}
-.interests.world h2{font:700 clamp(4.5rem,7vw,7rem)/.83 'Barlow Condensed',sans-serif;letter-spacing:-.04em;max-width:7ch}
-.interest-index>p{font-size:.9rem;line-height:1.5;color:#c9ceca}
-.interest-item{padding:1.2rem 0;gap:1.4rem}
-.interest-item img{width:7.5rem;height:5rem}
-.interest-item strong{font-size:1rem}
-.interest-item small{font-size:.72rem;color:#c6cbc6;margin-top:.4rem}
 blockquote{padding:8rem 12vw;background:#d5dbd4;color:#242b27;font:400 clamp(2.8rem,5.5vw,6rem)/1.05 'Instrument Serif',serif;letter-spacing:-.025em}
 #achievements{background:#eae6dc}
 #achievements>.achievement-list{margin:4rem 0 0 25%}
@@ -78,7 +71,6 @@ blockquote{padding:8rem 12vw;background:#d5dbd4;color:#242b27;font:400 clamp(2.8
 .new-nav{height:64px;padding:0 5vw}.new-nav nav{gap:1rem;max-width:68vw}.new-nav nav a{font-size:.65rem;white-space:nowrap}
 .new-hero{height:100svh;min-height:600px}.hero-heading{justify-content:flex-start;padding-top:23vh}.hero-kicker{font-size:.55rem;margin-bottom:1.5rem}.new-hero h1{font-size:32vw;line-height:.72}.new-hero img{height:62%;max-width:110%}.hero-bottom{font-size:.53rem;bottom:1.4rem}.hero-bottom span{max-width:8rem}
 .new-section{padding:6rem 6vw}.about-new{display:block;min-height:0}.about-new h2{font-size:clamp(4rem,14vw,6rem)}.about-new>div{font-size:1rem;margin-top:2.5rem}
-.interests.world{display:block;min-height:0;padding:5rem 6vw}.interests.world h2{font-size:clamp(3.5rem,15vw,6rem);line-height:.95;max-width:100%;overflow-wrap:anywhere;margin:0 0 2rem}.interest-item img{width:clamp(4.5rem,24vw,6rem);height:4rem;flex:none}.interest-item strong{min-width:0;overflow-wrap:anywhere}
 blockquote{padding:6rem 7vw;font-size:clamp(2.4rem,9vw,4rem)}
 #achievements>.achievement-list,#skills .skills-list{margin:3rem 0 0}#achievements>.text-link{margin-left:0}.achievement-list article{gap:1rem;align-items:start}.achievement-list h3{font-size:1.5rem}.achievement-list p{max-width:50%;text-align:right;font-size:.75rem}
 .section-heading{display:block;margin-bottom:3rem}.section-heading h2{margin-bottom:2rem}.project-list{display:block}.project-link,.project-link:first-child{min-height:25rem;margin-bottom:1rem}.project-link:first-child{min-height:31rem}.project-link img{inset:0;width:100%;height:65%;opacity:.75}.project-info{max-width:100%}.project-info h3{font-size:5rem}
@@ -98,9 +90,6 @@ body,.site-shell{background:var(--palette-light);color:var(--palette-deep)}
 .new-hero img{filter:none}
 .hero-bottom a{color:var(--palette-light)}
 .about-new,#achievements,#skills{background:var(--palette-light);color:var(--palette-deep)}
-.interests.world,.journey-story,.projects-new{background:var(--palette-deep);color:var(--palette-light)}
-.interest-index>p,.interest-item small{color:var(--palette-light)}
-.interest-item{border-color:rgba(248,250,227,.4)}
 blockquote,.work-new{background:var(--palette-blue);color:var(--palette-light)}
 .achievement-list article,.skills-list>*{border-color:rgba(13,14,130,.3)}
 .journey-stop{background:var(--palette-deep);border-color:rgba(248,250,227,.4)}

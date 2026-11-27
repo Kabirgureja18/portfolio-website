@@ -7,7 +7,6 @@ import GradualBlur from '../components/reactbits/GradualBlur/GradualBlur'
 const links = [
   { label: 'Home', href: '/#top' },
   { label: 'About', href: '/#about' },
-  { label: 'Interests', href: '/#interests' },
   { label: 'Achievements', href: '/#achievements' },
   { label: 'Projects', href: '/projects' },
   { label: 'Work', href: '/#work' },
