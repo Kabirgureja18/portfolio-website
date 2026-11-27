@@ -62,7 +62,22 @@ const projects = [
   {slug:'bmx-league', name:'BMX League', status:'Game', text:'A browser-based BMX game.', link:'https://bmx-league.vercel.app/'},
 ]
 function ProjectsPage() {
- return <section className="new-section detail projects-index"><a href="/">← Back home</a><p className="label">PROJECTS & WORK</p><h1>Things I make<span>.</span></h1><p className="detail-copy">Projects, experiments and work across technology and design.</p><div className="projects-index-list">{projects.map((p, index) => <article key={p.slug} className="projects-index-item"><div><p className="label">{String(index + 1).padStart(2, '0')} / {p.status}</p><h2>{p.name}</h2>{p.slug === 'decksmith' && <p>Ideas, beautifully presented.</p>}<p>{p.text}</p>{p.slug === 'decksmith' ? <span className="case-coming-soon">Coming Soon</span> : p.slug !== 'skillmark' && <a href={p.slug === 'bmx-league' ? p.link : '/projects/' + p.slug} target={p.slug === 'bmx-league' ? '_blank' : undefined} rel={p.slug === 'bmx-league' ? 'noopener noreferrer' : undefined}>{p.slug === 'bmx-league' ? 'Play Game' : 'Explore project ↗'}</a>}</div>{p.slug !== 'skillmark' && <img src={p.slug === 'decksmith' ? '/images/decksmith.svg' : p.slug === 'bmx-league' ? '/images/interests/gaming.jpg' : p.slug === 'terra' ? '/images/interests/robotics.jpg' : p.slug === 'vibe101' ? '/images/vibe101.png' : '/images/riverspark.png'} alt={p.slug === 'decksmith' ? 'Decksmith presentation concept' : p.slug === 'bmx-league' ? 'BMX League gameplay' : p.slug === 'riverspark' ? 'RiverSpark turbine model' : p.slug === 'vibe101' ? 'Vibe101 graphic' : 'T.E.R.R.A. concept illustration'} loading="lazy" decoding="async" />}</article>)}</div><div className="projects-index-work"><p className="label">COLLABORATIONS & OUTPUT</p><h2>Work.</h2><p>Design, websites, photography and the things I make with other people.</p><a href="/#contact">Have something in mind? Let’s talk ↗</a></div></section>
+ const images: Record<string, { src: string; alt: string }> = {
+  decksmith: { src: '/images/decksmith.svg', alt: 'Decksmith presentation concept' },
+  'bmx-league': { src: '/images/interests/gaming.jpg', alt: 'BMX League gameplay' },
+  terra: { src: '/images/interests/robotics.jpg', alt: 'T.E.R.R.A. concept illustration' },
+  vibe101: { src: '/images/vibe101.png', alt: 'Vibe101 graphic' },
+  riverspark: { src: '/images/riverspark.png', alt: 'RiverSpark turbine model' },
+ }
+ return <section className="new-section detail projects-index">
+  <a className="projects-back" href="/">← Back home</a>
+  <div className="projects-index-intro"><p className="label"><DecryptedText text="PROJECTS & WORK" animateOn="view" sequential speed={25} /></p><h1>Things I make<span>.</span></h1><p className="detail-copy">Projects, experiments and work across technology and design.</p><span className="projects-count">{String(projects.length).padStart(2, '0')} PROJECTS</span></div>
+  <div className="projects-index-list">{projects.map((p, index) => <article key={p.slug} className="projects-index-item">
+   <div className="projects-index-copy"><p className="label">{String(index + 1).padStart(2, '0')} / {p.status}</p><h2 aria-label={p.name}><Shuffle text={p.name} tag="span" triggerOnHover respectReducedMotion duration={0.35} /></h2>{p.slug === 'decksmith' && <p className="projects-tagline">Ideas, beautifully presented.</p>}<p>{p.text}</p>{p.slug === 'decksmith' ? <span className="case-coming-soon">Coming Soon</span> : p.slug !== 'skillmark' && <a className="projects-action" href={p.slug === 'bmx-league' ? p.link : '/projects/' + p.slug} target={p.slug === 'bmx-league' ? '_blank' : undefined} rel={p.slug === 'bmx-league' ? 'noopener noreferrer' : undefined}>{p.slug === 'bmx-league' ? 'Play Game' : 'Explore project'} <span aria-hidden="true">↗</span></a>}</div>
+   {images[p.slug] ? <div className="projects-index-image"><img src={images[p.slug].src} alt={images[p.slug].alt} loading="lazy" decoding="async" /></div> : <div className="projects-index-placeholder" aria-hidden="true"><span>{String(index + 1).padStart(2, '0')}</span><strong>{p.name}</strong><small>{p.status}</small></div>}
+  </article>)}</div>
+  <div className="projects-index-work"><p className="label">COLLABORATIONS & OUTPUT</p><h2>Work.</h2><p>Design, websites, photography and the things I make with other people.</p><a href="/#contact">Have something in mind? Let’s talk ↗</a></div>
+ </section>
 }
 function Home() {
  const root = useRef<HTMLDivElement>(null)
